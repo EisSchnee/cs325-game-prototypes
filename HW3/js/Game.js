@@ -170,7 +170,7 @@ BasicGame.Game.prototype = {
             this.ctr++;
         }
         */
-        this.game.physics.arcade.collide(this.enemies, this.char, this.damage);//this.damage, null, this
+        this.game.physics.arcade.collide(this.enemies, this.char, this.damage, null, this);//this.damage, null, this
 
         
         this.game.physics.arcade.collide(this.char, this.food, this.point, null, this);
