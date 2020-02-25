@@ -156,7 +156,7 @@ BasicGame.Game.prototype = {
                 this.state.start('Fail');
                 break;
             default:
-                player.loadTexture('char1', 0, false);
+                //player.loadTexture('char1', 0, false);
                 if(this.score< 0){
                     this.death.play();
                     this.quitGame(0);
@@ -202,19 +202,19 @@ BasicGame.Game.prototype = {
         this.createFood();
         switch(this.score){
             case 2:
-                this.char.loadTexture('char2', 0, false);
+                //this.char.loadTexture('char2', 0, false);
                 break;      
             case 3:
-                this.char.loadTexture('char3', 0, false);
+                //this.char.loadTexture('char3', 0, false);
                 break;
             case 4:
-                this.char.loadTexture('char4', 0, false);
+                //this.char.loadTexture('char4', 0, false);
                 break;
             case 5:
                 this.quitGame(1);
                 break;
             default:
-                this.char.loadTexture('char4', 0, false);
+                //this.char.loadTexture('char4', 0, false);
             }
            this.char.resetFrame();
            this.char.anchor.setTo(0.5,0.5);
