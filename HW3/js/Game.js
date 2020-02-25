@@ -33,9 +33,9 @@ BasicGame.Game = function (game) {
 
     this.objects = [0];
 
-    this.food;
+    this.food = null;
 
-    this.enemies;
+    this.enemies = null;
 
     this.score = 1;
 
@@ -71,9 +71,9 @@ BasicGame.Game.prototype = {
 
         this.ctr = 0; 
         
-        var enemies = this.game.add.group();
-            enemies.enableBody = true;
-            enemies.physicsBodyType = Phaser.Physics.ARCADE;
+        this.enemies = this.game.add.group();
+            this.enemies.enableBody = true;
+            this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
             this.createEnemies();
         
 
@@ -110,13 +110,16 @@ BasicGame.Game.prototype = {
     },
 
     createEnemies: function () {
-        while(this.ctr < 7) {
-            var enemy = this.game.add.sprite((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'blueParticle1');
+        var enemy;
+        var p = 0;
+        while(p < 7) {
+            enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'blueParticle1');
             enemy.anchor.setTo(0.5,0.5);
             var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
             var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
             enemy.body.velocity.x = xVelocity;
             enemy.body.velocity.y = yVelocity;
+            p++;
         }
         this.enemies.setAll('body.collideWorldBounds', true);
         this.enemies.setAll('body.bounce.x', 1);
@@ -167,14 +170,14 @@ BasicGame.Game.prototype = {
             this.ctr++;
         }
         */
-        this.game.physics.arcade.collide(this.enemies, this.char, this.damage, null, this);//this.damage, null, this
+        this.game.physics.arcade.collide(this.enemies, this.char, this.damage);//this.damage, null, this
 
         
         this.game.physics.arcade.collide(this.char, this.food, this.point, null, this);
      
     },
 
-    damage: function(enemy, player) {
+    damage: function(enemy) {
         this.score--;
         if(this.ctr == 0){
             this.quitGame(2);
