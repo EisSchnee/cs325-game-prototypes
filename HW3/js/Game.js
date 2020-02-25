@@ -116,8 +116,8 @@ BasicGame.Game.prototype = {
 
     update: function () {
 
-        this.game.physics.arcade.collide(this.char, this.enemies, this.damage, null, this);// error in this.char.body
-        this.physics.arcade.collide(this.char, this.food, this.point, null, this);
+        this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);// error in this.char.body
+        this.physics.arcade.overlap(this.char, this.food, this.point, null, this);
 
         //this.text.setText('Score: ' + this.score);
         if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
