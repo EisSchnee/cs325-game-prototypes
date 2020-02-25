@@ -43,8 +43,6 @@ BasicGame.Game = function (game) {
 
     this.ctr = 0;
 
-    //this.text;
-
     this.scoreup = new Audio('assets/menuhit.wav');
     this.scoredown = new Audio('assets/taiko-normal-hitclap.wav');
     this.death = new Audio('assets/taiko-normal-hitfinish.wav');
@@ -78,37 +76,8 @@ BasicGame.Game.prototype = {
             this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
             //this.game.physics.enable( this.enemies, Phaser.Physics.ARCADE );
             this.createEnemies();
-        
-
-/*
-        var enemy = this.game.add.sprite(Math.random()*this.game.world.width, Math.random()*this.game.world.height, 'blueParticle2');
-            this.game.physics.enable(enemy, Phaser.Physics.ARCADE);
-            var yVelocity = (Math.random()*this.SPEED/5)-(this.SPEED/10);
-            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/5)-(yVelocity*yVelocity));
-            enemy.body.collideWorldBounds = false;
-            this.objects.push(enemy);
-
-        while(this.ctr < 7){
-            var enemy = this.game.add.sprite((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'blueParticle1');
-            this.game.physics.enable(enemy, Phaser.Physics.ARCADE);
-            enemy.anchor.setTo(0.5,0.5);
-            var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
-            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
-            enemy.body.velocity.x = xVelocity;
-            enemy.body.velocity.y = yVelocity;
-            enemy.body.collideWorldBounds = false;
-
-            this.objects.push(enemy);
-            this.ctr++;
-        }
-
-*/
 
         this.createFood();
-
-        /*var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        this.text = this.game.add.text( 15, 15, 'Score: 0', style );
-        this.text.anchor.setTo( 0.5, 0.0 );*/
 
     },
 
