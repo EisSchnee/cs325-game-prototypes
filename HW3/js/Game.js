@@ -76,7 +76,7 @@ BasicGame.Game.prototype = {
         this.enemies = this.game.add.group();
             this.enemies.enableBody = true;
             this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
-            //this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
+             this.game.physics.enable( this.enemies, Phaser.Physics.ARCADE );
             this.createEnemies();
         
 
