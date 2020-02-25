@@ -167,7 +167,7 @@ BasicGame.Game.prototype = {
             this.ctr++;
         }
         */
-        this.game.physics.arcade.collide(this.enemies, this.char, this.damage);//this.damage, null, this
+        this.game.physics.arcade.collide(this.enemies, this.char, this.damage, null, this);//this.damage, null, this
 
         
         this.game.physics.arcade.collide(this.char, this.food, this.point, null, this);
@@ -189,7 +189,7 @@ BasicGame.Game.prototype = {
                 this.state.start('Fail');
                 break;
             default:
-                player.loadTexture('char1', 0, false);
+                this.char.loadTexture('char1', 0, false);
                 if(this.score< 0){
                     this.death.play();
                     this.quitGame(0);
@@ -197,8 +197,8 @@ BasicGame.Game.prototype = {
                     this.score = 1;
                 }
             }
-            player.resetFrame();
-            player.anchor.setTo(0.5,0.5);
+            this.char.resetFrame();
+            this.char.anchor.setTo(0.5,0.5);
            // this.scoredown.play();
     },
 
