@@ -139,31 +139,6 @@ BasicGame.Game.prototype = {
             this.char.body.velocity.y = 0;
         }
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        this.ctr = 0;
-        
-        /*
-        while(this.ctr< this.objects.length){
-            var temp = this.objects[this.ctr];
-            this.game.physics.arcade.overlap(this.char, temp, this.damage, null, this);//player hits enemy object
-            if (temp.x > this.game.width){
-                 this.objects[this.ctr].body.velocity.x = -temp.body.velocity.x;
-                 this.objects[this.ctr].x = this.game.width-10;
-            }else if(temp.x < 0){
-                this.objects[this.ctr].body.velocity.x = -temp.body.velocity.x;
-                this.objects[this.ctr].x = 10; 
-            }
-            if (temp.y > this.game.height){
-                this.objects[this.ctr].body.velocity.y = -temp.body.velocity.y;
-                this.objects[this.ctr].y = this.game.height-10;
-            }else if(temp.y < 0){
-                this.objects[this.ctr].body.velocity.y = -temp.body.velocity.y;
-                this.objects[this.ctr].y = 10;
-            }
-            this.ctr++;
-        }
-        */
-        
-     
     },
 
     damage: function(player, enemy) {
@@ -181,7 +156,7 @@ BasicGame.Game.prototype = {
                 this.state.start('Fail');
                 break;
             default:
-                //player.loadTexture('char1', 0, false);
+                player.loadTexture('char1', 0, false);
                 if(this.score< 0){
                     this.death.play();
                     this.quitGame(0);
@@ -189,8 +164,8 @@ BasicGame.Game.prototype = {
                     this.score = 1;
                 }
             }
-            this.char.resetFrame();
-            this.char.anchor.setTo(0.5,0.5);
+            player.resetFrame();
+            player.anchor.setTo(0.5,0.5);
            // this.scoredown.play();
     },
 
