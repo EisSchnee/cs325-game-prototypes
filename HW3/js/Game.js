@@ -177,7 +177,7 @@ BasicGame.Game.prototype = {
      
     },
 
-    damage: function(enemy) {
+    damage: function(enemy, player) {
         this.score--;
         if(this.ctr == 0){
             this.quitGame(2);
@@ -192,7 +192,7 @@ BasicGame.Game.prototype = {
                 this.state.start('Fail');
                 break;
             default:
-                this.char.loadTexture('char1', 0, false);
+                //player.loadTexture('char1', 0, false);
                 if(this.score< 0){
                     this.death.play();
                     this.quitGame(0);
@@ -200,8 +200,8 @@ BasicGame.Game.prototype = {
                     this.score = 1;
                 }
             }
-            this.char.resetFrame();
-            this.char.anchor.setTo(0.5,0.5);
+            player.resetFrame();
+            player.anchor.setTo(0.5,0.5);
            // this.scoredown.play();
     },
 
