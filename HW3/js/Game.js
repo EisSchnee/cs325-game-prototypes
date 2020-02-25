@@ -116,7 +116,7 @@ BasicGame.Game.prototype = {
 
     update: function () {
 
-        this.physics.arcade.collide(this.enemies, this.char, this.damage, null, this);// error in this.char.body
+        this.physics.arcade.collide(this.char, this.enemies, this.damage, null, this);// error in this.char.body
         this.physics.arcade.collide(this.char, this.food, this.point, null, this);
 
         //this.text.setText('Score: ' + this.score);
