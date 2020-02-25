@@ -1,0 +1,9 @@
+{"frames": [
+
+{
+	"filename": "cheese"
+	"frame": {"x":183, "y": 0, "w": 17, "h": 17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":17},
+	"sourceSize": {"w":17,"h":17}

@@ -1,0 +1,87 @@
+{"frames": [
+
+{
+	"filename": "up1"
+	"frame": {"x":0, "y": 0, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "up2"
+	"frame": {"x":32, "y": 0, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "up3"
+	"frame": {"x":64, "y": 0, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "right1"
+	"frame": {"x":0, "y": 48, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "right2"
+	"frame": {"x": 32, "y": 48, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "right3"
+	"frame": {"x": 64, "y": 48, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "down1"
+	"frame": {"x":0, "y": 96, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "down2"
+	"frame": {"x":32, "y": 96, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "down3"
+	"frame": {"x":64, "y": 64, "w": 32, "h": 32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+}
+	"filename": "left1"
+	"frame": {"x":0, "y": 144, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "left2"
+	"frame": {"x":32, "y": 144, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}
+	"filename": "left3"
+	"frame": {"x":64, "y": 144, "w": 32, "h": 48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
+	"sourceSize": {"w":32,"h":48}
+}]
