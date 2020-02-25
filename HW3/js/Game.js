@@ -37,6 +37,8 @@ BasicGame.Game = function (game) {
 
     this.enemies = null;
 
+    this.enemy = null;
+
     this.score = 1;
 
     this.ctr = 0;
@@ -55,11 +57,11 @@ BasicGame.Game.prototype = {
 
      
         this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'char1' );
-
+        this.char.enableBody = true;
         this.char.anchor.setTo( 0.5, 0.5 );
 
         this.game.physics.enable( this.char, Phaser.Physics.ARCADE );
-
+        
         this.char.body.collideWorldBounds = true;
 
         this.game.input.keyboard.addKeyCapture([
@@ -74,6 +76,7 @@ BasicGame.Game.prototype = {
         this.enemies = this.game.add.group();
             this.enemies.enableBody = true;
             this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
+            //this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
             this.createEnemies();
         
 
@@ -109,24 +112,13 @@ BasicGame.Game.prototype = {
 
     },
 
-    createEnemies: function () {
-        var enemy;
-        var p = 0;
-        while(p < 7) {
-            enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'blueParticle1');
-            enemy.anchor.setTo(0.5,0.5);
-            var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
-            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
-            enemy.body.velocity.x = xVelocity;
-            enemy.body.velocity.y = yVelocity;
-            p++;
-        }
-        this.enemies.setAll('body.collideWorldBounds', true);
-        this.enemies.setAll('body.bounce.x', 1);
-        this.enemies.setAll('body.bounce.y', 1);
-    },
+    
 
     update: function () {
+
+        this.physics.arcade.collide(this.enemies, this.char, this.damage, null, this);// error in this.char.body
+        this.physics.arcade.collide(this.char, this.food, this.point, null, this);
+
         //this.text.setText('Score: ' + this.score);
         if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
             // If the LEFT key is down, move left
@@ -170,14 +162,11 @@ BasicGame.Game.prototype = {
             this.ctr++;
         }
         */
-        this.game.physics.arcade.collide(this.enemies, this.char, this.damage, null, this);//this.damage, null, this
-
         
-        this.game.physics.arcade.collide(this.char, this.food, this.point, null, this);
      
     },
 
-    damage: function(enemy, player) {
+    damage: function(player, enemy) {
         this.score--;
         if(this.ctr == 0){
             this.quitGame(2);
@@ -200,9 +189,25 @@ BasicGame.Game.prototype = {
                     this.score = 1;
                 }
             }
-            player.resetFrame();
-            player.anchor.setTo(0.5,0.5);
+            this.char.resetFrame();
+            this.char.anchor.setTo(0.5,0.5);
            // this.scoredown.play();
+    },
+
+    createEnemies: function () {
+        var p = 0;
+        while(p < 7) {
+            this.enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'blueParticle1');
+            this.enemy.anchor.setTo(0.5,0.5);
+            var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
+            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
+            this.enemy.body.velocity.x = xVelocity;
+            this.enemy.body.velocity.y = yVelocity;
+            p++;
+        }
+        this.enemies.setAll('body.collideWorldBounds', true);
+        this.enemies.setAll('body.bounce.x', 1);
+        this.enemies.setAll('body.bounce.y', 1);
     },
 
     createFood: function() {
