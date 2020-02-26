@@ -208,9 +208,6 @@ BasicGame.Game.prototype = {
                 this.enemy.animations.play('WalkLeft');
             }
         }
-        this.enemies.setAll('body.collideWorldBounds', true);
-        this.enemies.setAll('body.bounce.x', 1);
-        this.enemies.setAll('body.bounce.y', 1);
     },
 
     createEnemy: function () {
