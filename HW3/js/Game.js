@@ -175,7 +175,7 @@ BasicGame.Game.prototype = {
             this.enemy.animations.add('WalkRight', [9,10,11], 10, true);
             var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
             var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
-            if(Math.random*2 > 1){
+            if(Math.random()*2 > 1){
                 xVelocity = xVelocity*-1;
             }
             this.enemy.body.velocity.x = xVelocity;
