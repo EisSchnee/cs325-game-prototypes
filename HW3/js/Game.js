@@ -93,7 +93,7 @@ BasicGame.Game.prototype = {
         this.text = this.game.add.text( 15, 15, 'Score: 0', style );
         this.text.anchor.setTo( 0.5, 0.0 );*/
 
-        this.game.time.events.add(Phaser.Timer.SECONDS * 7, this.createEnemy, this);
+        this.game.time.events.loop(Phaser.Timer.SECONDS * 7, this.createEnemy, this);
 
     },
 
