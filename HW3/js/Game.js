@@ -186,7 +186,7 @@ BasicGame.Game.prototype = {
             }else if(yVelocity < -Math.abs(xVelocity)){
                 this.enemy.animations.play('WalkDown');
             }else if(xVelocity > 0){
-                this.enemy.animations.play('WalkRLeft');
+                this.enemy.animations.play('WalkLeft');
             }else{
                 this.enemy.animations.play('WalkRight');
             }
