@@ -172,7 +172,7 @@ BasicGame.Game.prototype = {
             if(Math.random()*2 > 1){
                 xVelocity = xVelocity*-1;
             }
-            var positionX = null;
+            var PositionX = null;
             var PositionY = null;
             if(yVelocity>Math.abs(xVelocity)){
                 PositionY = this.game.world.height;
@@ -187,7 +187,7 @@ BasicGame.Game.prototype = {
                 PositionX = this.game.world.width;
                 PositionY = Math.random()*this.game.world.height;
             }
-            this.enemy = this.enemies.create(positionX, positionY, 'cat1');
+            this.enemy = this.enemies.create(PositionX, PositionY, 'cat1');
             this.enemy.anchor.setTo(0.5,0.5);
             this.enemy.animations.add('walkDown', [6,7,8], 10, true);
             this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
