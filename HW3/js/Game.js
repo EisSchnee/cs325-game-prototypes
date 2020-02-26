@@ -49,20 +49,20 @@ BasicGame.Game = function (game) {
 
     this.scoreup = new Audio('assets/Eat Chips.mp3');
     this.scoredown = new Audio('assets/Cat Meow.mp3');
-    
+
 };
 
 BasicGame.Game.prototype = {
 
     create: function () {
 
-     
-        this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'char' );
+
+        this.char = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'char');
         this.char.frame = 6;
         this.char.animations.add('walkRight', [3, 4, 5], 10, true);
-        this.char.animations.add('walkDown', [6,7,8], 10, true);
-        this.char.animations.add('walkUp', [0,1,2], 10, true);
-        this.char.animations.add('walkLeft', [9,10,11], 10, true);
+        this.char.animations.add('walkDown', [6, 7, 8], 10, true);
+        this.char.animations.add('walkUp', [0, 1, 2], 10, true);
+        this.char.animations.add('walkLeft', [9, 10, 11], 10, true);
 
 
         this.char.enableBody = true;
@@ -93,6 +93,8 @@ BasicGame.Game.prototype = {
         this.text = this.game.add.text( 15, 15, 'Score: 0', style );
         this.text.anchor.setTo( 0.5, 0.0 );*/
 
+        this.game.time.events.add(Phaser.Timer.SECONDS * 7, this.createEnemy, this);
+
     },
 
 
@@ -111,27 +113,27 @@ BasicGame.Game.prototype = {
             // If the RIGHT key is down, move right
             this.char.body.velocity.x = this.SPEED;
             this.char.animations.play('walkRight');
-        }else{
+        } else {
             this.char.body.velocity.x = 0;
 
         } if (this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             // If the UP key is down, move up
             this.char.body.velocity.y = -this.SPEED;
-            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+            if (!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
                 this.char.animations.play('walkUp')
             }
-        } else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
+        } else if (this.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
             // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
             this.char.body.velocity.y = this.SPEED;
-            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+            if (!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
                 this.char.animations.play('walkDown');
             }
         } else {
             // Stop moving
             this.char.body.velocity.y = 0;
-            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+            if (!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
                 this.char.frame = 6;
-             }
+            }
         }
 
 
@@ -144,14 +146,14 @@ BasicGame.Game.prototype = {
         enemy.destroy();
         switch (this.score) {
             case 0:
-               // this.death.play();
-               //this.death.play();
+                // this.death.play();
+                //this.death.play();
                 this.quitGame(0);
                 this.state.start('Fail');
                 break;
             default:
                 //player.loadTexture('char1', 0, false);
-                if(this.score< 0){
+                if (this.score < 0) {
                     //this.death.play();
                     this.quitGame(0);
                 } else {
@@ -196,9 +198,9 @@ BasicGame.Game.prototype = {
             this.enemy.body.velocity.x = xVelocity;
             this.enemy.body.velocity.y = yVelocity;
             p++;
-            if(yVelocity>Math.abs(xVelocity)){
+            if (yVelocity > Math.abs(xVelocity)) {
                 this.enemy.animations.play('WalkUp');
-            }else if(yVelocity < -Math.abs(xVelocity)){
+            } else if (yVelocity < -Math.abs(xVelocity)) {
                 this.enemy.animations.play('WalkDown');
             }else if(xVelocity > 0){
                 this.enemy.animations.play('WalkRight');
@@ -210,8 +212,35 @@ BasicGame.Game.prototype = {
         this.enemies.setAll('body.bounce.x', 1);
         this.enemies.setAll('body.bounce.y', 1);
     },
-    createFood: function() {
-        var food = this.game.add.sprite((Math.random()*this.game.world.width), Math.random()*this.game.world.height, 'cheese');
+
+    createEnemy: function () {
+        this.enemy = this.enemies.create(0, (Math.random() * this.game.world.height), 'cat1');
+        this.enemy.anchor.setTo(0.5, 0.5);
+        this.enemy.animations.add('walkDown', [6, 7, 8], 10, true);
+        this.enemy.animations.add('WalkUp', [0, 1, 2], 10, true);
+        this.enemy.animations.add('WalkLeft', [3, 4, 5], 10, true);
+        this.enemy.animations.add('WalkRight', [9, 10, 11], 10, true);
+        var yVelocity = (Math.random() * this.SPEED) - (this.SPEED / 2);
+        var xVelocity = Math.sqrt(((this.SPEED * this.SPEED) / 2) - (yVelocity * yVelocity));
+        if (Math.random() * 2 > 1) {
+            xVelocity = xVelocity * -1;
+        }
+        this.enemy.body.velocity.x = xVelocity;
+        this.enemy.body.velocity.y = yVelocity;
+        p++;
+        if (yVelocity > Math.abs(xVelocity)) {
+            this.enemy.animations.play('WalkUp');
+        } else if (yVelocity < -Math.abs(xVelocity)) {
+            this.enemy.animations.play('WalkDown');
+        } else if (xVelocity > 0) {
+            this.enemy.animations.play('WalkLeft');
+        } else {
+            this.enemy.animations.play('WalkRight');
+        }
+    },
+
+    createFood: function () {
+        var food = this.game.add.sprite((Math.random() * this.game.world.width), Math.random() * this.game.world.height, 'cheese');
         this.game.physics.enable(food, Phaser.Physics.ARCADE);
         food.anchor.setTo(0.5, 0.5);
         food.body.collideWorldBounds = false;
