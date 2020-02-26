@@ -165,19 +165,32 @@ BasicGame.Game.prototype = {
 
 
     createEnemies: function () {
-        var p = 0;
-        while(p < 7) {
-            this.enemy = this.enemies.create(0, (Math.random()*this.game.world.height), 'cat1');
-            this.enemy.anchor.setTo(0.5,0.5);
-            this.enemy.animations.add('walkDown', [6,7,8], 10, true);
-            this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
-            this.enemy.animations.add('WalkLeft', [3,4,5], 10, true);
-            this.enemy.animations.add('WalkRight', [9,10,11], 10, true);
-            var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
+        var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
             var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
             if(Math.random()*2 > 1){
                 xVelocity = xVelocity*-1;
             }
+            var positionX = null;
+            var PositionY = null;
+            if(yVelocity>Math.abs(xVelocity)){
+                PositionY = this.game.world.height;
+                PositionX = Math.random()*this.game.world.width;
+            }else if(yVelocity < -Math.abs(xVelocity)){
+                PositionY = 0;
+                PositionX = Math.random()*this.game.world.width;
+            }else if(xVelocity > 0){
+                PositionX = 0;
+                PositionY = Math.random()*this.game.world.height;
+            }else{
+                PositionX = this.game.world.width;
+                PositionY = Math.random()*this.game.world.height;
+            }
+            this.enemy = this.enemies.create(positionX, positionY, 'cat1');
+            this.enemy.anchor.setTo(0.5,0.5);
+            this.enemy.animations.add('walkDown', [6,7,8], 10, true);
+            this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
+            this.enemy.animations.add('Walkright', [3,4,5], 10, true);
+            this.enemy.animations.add('WalkLeft', [9,10,11], 10, true);
             this.enemy.body.velocity.x = xVelocity;
             this.enemy.body.velocity.y = yVelocity;
             p++;
@@ -186,16 +199,15 @@ BasicGame.Game.prototype = {
             }else if(yVelocity < -Math.abs(xVelocity)){
                 this.enemy.animations.play('WalkDown');
             }else if(xVelocity > 0){
-                this.enemy.animations.play('WalkLeft');
-            }else{
                 this.enemy.animations.play('WalkRight');
+            }else{
+                this.enemy.animations.play('WalkLeft');
             }
         }
-        this.enemies.setAll('body.collideWorldBounds', false);
+        this.enemies.setAll('body.collideWorldBounds', true);
         this.enemies.setAll('body.bounce.x', 1);
         this.enemies.setAll('body.bounce.y', 1);
     },
-
     createFood: function() {
         var food = this.game.add.sprite((Math.random()*this.game.world.width), Math.random()*this.game.world.height, 'cheese');
         this.game.physics.enable(food, Phaser.Physics.ARCADE);
