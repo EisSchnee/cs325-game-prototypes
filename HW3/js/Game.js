@@ -39,13 +39,16 @@ BasicGame.Game = function (game) {
 
     this.enemy = null;
 
+    this.homingEnemies = null;
+
     this.score = 1;
 
     this.ctr = 0;
 
-    this.scoreup = new Audio('assets/menuhit.wav');
-    this.scoredown = new Audio('assets/taiko-normal-hitclap.wav');
-    this.death = new Audio('assets/taiko-normal-hitfinish.wav');
+    //this.text;
+
+    this.scoreup = new Audio('assets/Eat Chips.mp3');
+    this.scoredown = new Audio('assets/Cat Meow.mp3');
     
 };
 
@@ -54,7 +57,14 @@ BasicGame.Game.prototype = {
     create: function () {
 
      
-        this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'char1' );
+        this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'char' );
+        this.char.frame = 6;
+        this.char.animations.add('walkRight', [3, 4, 5], 10, true);
+        this.char.animations.add('walkDown', [6,7,8], 10, true);
+        this.char.animations.add('walkUp', [0,1,2], 10, true);
+        this.char.animations.add('walkLeft', [9,10,11], 10, true);
+
+
         this.char.enableBody = true;
         this.char.anchor.setTo( 0.5, 0.5 );
 
@@ -76,8 +86,34 @@ BasicGame.Game.prototype = {
             this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
             //this.game.physics.enable( this.enemies, Phaser.Physics.ARCADE );
             this.createEnemies();
+        
+
+/*
+        var enemy = this.game.add.sprite(Math.random()*this.game.world.width, Math.random()*this.game.world.height, 'blueParticle2');
+            this.game.physics.enable(enemy, Phaser.Physics.ARCADE);
+            var yVelocity = (Math.random()*this.SPEED/5)-(this.SPEED/10);
+            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/5)-(yVelocity*yVelocity));
+            enemy.body.collideWorldBounds = false;
+            this.objects.push(enemy);
+        while(this.ctr < 7){
+            var enemy = this.game.add.sprite((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'blueParticle1');
+            this.game.physics.enable(enemy, Phaser.Physics.ARCADE);
+            enemy.anchor.setTo(0.5,0.5);
+            var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
+            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
+            enemy.body.velocity.x = xVelocity;
+            enemy.body.velocity.y = yVelocity;
+            enemy.body.collideWorldBounds = false;
+            this.objects.push(enemy);
+            this.ctr++;
+        }
+*/
 
         this.createFood();
+
+        /*var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+        this.text = this.game.add.text( 15, 15, 'Score: 0', style );
+        this.text.anchor.setTo( 0.5, 0.0 );*/
 
     },
 
@@ -92,20 +128,32 @@ BasicGame.Game.prototype = {
         if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
             // If the LEFT key is down, move left
             this.char.body.velocity.x = -this.SPEED;
+            this.char.animations.play('walkLeft')
         } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
             // If the RIGHT key is down, move right
             this.char.body.velocity.x = this.SPEED;
+            this.char.body.play('walkRight');
         }else{
             this.char.body.velocity.x = 0;
+
         } if (this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             // If the UP key is down, move up
             this.char.body.velocity.y = -this.SPEED;
+            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+                this.char.animations.play('walkUp')
+            }
         } else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
             // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
             this.char.body.velocity.y = this.SPEED;
+            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+                this.char.animations.play('walkDown');
+            }
         } else {
             // Stop moving
             this.char.body.velocity.y = 0;
+            if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+                this.char.frame = 6;
+             }
         }
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
     },
@@ -135,10 +183,36 @@ BasicGame.Game.prototype = {
            // this.scoredown.play();
     },
 
+    createEnemy: function() {
+        this.enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'cat1');
+        this.enemy.anchor.setTo(0.5,0.5);
+        this.enemy.animations.add('walkDown', [6,7,8], 10, true);
+        this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
+        this.enemy.animations.add('WalkLeft', [3,4,5], 10, true);
+        this.enemy.animations.add('WalkRight', [9,10,11], 10, true);
+        var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
+        var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
+        this.enemy.body.velocity.x = xVelocity;
+        this.enemy.body.velocity.y = yVelocity;
+        if(yVelocity>Math.abs(2*xVelocity)){
+            this.enemy.animations.play('WalkUp');
+        }else if(yVelocity < -Math.abs(2*xVelocity)){
+            this.enemy.animations.play('WalkDown');
+        }else if(xVelocity > 0){
+            this.enemy.animations.play('WalkRight');
+        }else{
+            this.enemy.animations.play('WalkLeft');
+        }
+        this.enemies.setAll('body.collideWorldBounds', true);
+        this.enemies.setAll('body.bounce.x', 1);
+        this.enemies.setAll('body.bounce.y', 1);
+
+    },
+
     createEnemies: function () {
         var p = 0;
         while(p < 7) {
-            this.enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'blueParticle1');
+            this.enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'cat1');
             this.enemy.anchor.setTo(0.5,0.5);
             var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
             var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
@@ -146,13 +220,22 @@ BasicGame.Game.prototype = {
             this.enemy.body.velocity.y = yVelocity;
             p++;
         }
+        if(yVelocity>Math.abs(2*xVelocity)){
+            this.enemy.animations.play('WalkUp');
+        }else if(yVelocity < -Math.abs(2*xVelocity)){
+            this.enemy.animations.play('WalkDown');
+        }else if(xVelocity > 0){
+            this.enemy.animations.play('WalkRight');
+        }else{
+            this.enemy.animations.play('WalkLeft');
+        }
         this.enemies.setAll('body.collideWorldBounds', true);
         this.enemies.setAll('body.bounce.x', 1);
         this.enemies.setAll('body.bounce.y', 1);
     },
 
     createFood: function() {
-        var food = this.game.add.sprite((Math.random()*this.game.world.width), Math.random()*this.game.world.height, 'greenParticle');
+        var food = this.game.add.sprite((Math.random()*this.game.world.width), Math.random()*this.game.world.height, 'cheese');
         this.game.physics.enable(food, Phaser.Physics.ARCADE);
         food.anchor.setTo(0.5,0.5);
         food.body.collideWorldBounds = false;
