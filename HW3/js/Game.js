@@ -165,14 +165,14 @@ BasicGame.Game.prototype = {
         switch(this.score){
             case 0:
                // this.death.play();
-               this.death.play();
+               //this.death.play();
                 this.quitGame(0);
                 this.state.start('Fail');
                 break;
             default:
                 //player.loadTexture('char1', 0, false);
                 if(this.score< 0){
-                    this.death.play();
+                    //this.death.play();
                     this.quitGame(0);
                 }else{
                     this.score = 1;
