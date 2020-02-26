@@ -66,10 +66,10 @@ BasicGame.Game.prototype = {
 
 
         this.char.enableBody = true;
-        this.char.anchor.setTo( 0.5, 0.5 );
+        this.char.anchor.setTo(0.5, 0.5);
 
-        this.game.physics.enable( this.char, Phaser.Physics.ARCADE );
-        
+        this.game.physics.enable(this.char, Phaser.Physics.ARCADE);
+
         this.char.body.collideWorldBounds = true;
 
         this.game.input.keyboard.addKeyCapture([
@@ -79,35 +79,13 @@ BasicGame.Game.prototype = {
             Phaser.Keyboard.DOWN
         ]);
 
-        this.ctr = 0; 
-        
-        this.enemies = this.game.add.group();
-            this.enemies.enableBody = true;
-            this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
-            //this.game.physics.enable( this.enemies, Phaser.Physics.ARCADE );
-            this.createEnemies();
-        
+        this.ctr = 0;
 
-/*
-        var enemy = this.game.add.sprite(Math.random()*this.game.world.width, Math.random()*this.game.world.height, 'blueParticle2');
-            this.game.physics.enable(enemy, Phaser.Physics.ARCADE);
-            var yVelocity = (Math.random()*this.SPEED/5)-(this.SPEED/10);
-            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/5)-(yVelocity*yVelocity));
-            enemy.body.collideWorldBounds = false;
-            this.objects.push(enemy);
-        while(this.ctr < 7){
-            var enemy = this.game.add.sprite((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'blueParticle1');
-            this.game.physics.enable(enemy, Phaser.Physics.ARCADE);
-            enemy.anchor.setTo(0.5,0.5);
-            var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
-            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
-            enemy.body.velocity.x = xVelocity;
-            enemy.body.velocity.y = yVelocity;
-            enemy.body.collideWorldBounds = false;
-            this.objects.push(enemy);
-            this.ctr++;
-        }
-*/
+        this.enemies = this.game.add.group();
+        this.enemies.enableBody = true;
+        this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
+        //this.game.physics.enable( this.enemies, Phaser.Physics.ARCADE );
+        this.createEnemies();
 
         this.createFood();
 
@@ -117,7 +95,7 @@ BasicGame.Game.prototype = {
 
     },
 
-    
+
 
     update: function () {
 
@@ -155,14 +133,16 @@ BasicGame.Game.prototype = {
                 this.char.frame = 6;
              }
         }
+
+
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
     },
 
-    damage: function(player, enemy) {
+    damage: function (player, enemy) {
         this.score--;
         this.scoredown.play();
-        enemy.kill();
-        switch(this.score){
+        enemy.destroy();
+        switch (this.score) {
             case 0:
                // this.death.play();
                //this.death.play();
@@ -174,20 +154,20 @@ BasicGame.Game.prototype = {
                 if(this.score< 0){
                     //this.death.play();
                     this.quitGame(0);
-                }else{
+                } else {
                     this.score = 1;
                 }
-            }
-            player.resetFrame();
-            player.anchor.setTo(0.5,0.5);
-           // this.scoredown.play();
+        }
+        player.resetFrame();
+        player.anchor.setTo(0.5, 0.5);
+        // this.scoredown.play();
     },
 
 
     createEnemies: function () {
         var p = 0;
         while(p < 7) {
-            this.enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'cat1');
+            this.enemy = this.enemies.create(0, (Math.random()*this.game.world.height), 'cat1');
             this.enemy.anchor.setTo(0.5,0.5);
             this.enemy.animations.add('walkDown', [6,7,8], 10, true);
             this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
@@ -211,7 +191,7 @@ BasicGame.Game.prototype = {
                 this.enemy.animations.play('WalkRight');
             }
         }
-        this.enemies.setAll('body.collideWorldBounds', true);
+        this.enemies.setAll('body.collideWorldBounds', false);
         this.enemies.setAll('body.bounce.x', 1);
         this.enemies.setAll('body.bounce.y', 1);
     },
@@ -219,22 +199,22 @@ BasicGame.Game.prototype = {
     createFood: function() {
         var food = this.game.add.sprite((Math.random()*this.game.world.width), Math.random()*this.game.world.height, 'cheese');
         this.game.physics.enable(food, Phaser.Physics.ARCADE);
-        food.anchor.setTo(0.5,0.5);
+        food.anchor.setTo(0.5, 0.5);
         food.body.collideWorldBounds = false;
         this.food = food;
     },
 
-    point: function(){
+    point: function () {
         this.score++;
         this.scoreup.play();
         var ctr = 0;
         this.createEnemies();
         this.food.destroy();
         this.createFood();
-        switch(this.score){
+        switch (this.score) {
             case 2:
                 //this.char.loadTexture('char2', 0, false);
-                break;      
+                break;
             case 3:
                 //this.char.loadTexture('char3', 0, false);
                 break;
@@ -245,10 +225,10 @@ BasicGame.Game.prototype = {
                 this.quitGame(1);
                 break;
             default:
-                //this.char.loadTexture('char4', 0, false);
-            }
-           this.char.resetFrame();
-           this.char.anchor.setTo(0.5,0.5);
+            //this.char.loadTexture('char4', 0, false);
+        }
+        this.char.resetFrame();
+        this.char.anchor.setTo(0.5, 0.5);
     },
 
     quitGame: function (val) {
@@ -259,11 +239,11 @@ BasicGame.Game.prototype = {
         this.char.destroy();
         this.objects = [];
         this.score = 1;*/
-        if(val == 0){
+        if (val == 0) {
             this.state.start('Fail');
-        }else if(val == 1){
+        } else if (val == 1) {
             this.state.start('Win');
-        }else{
+        } else {
             this.state.start('MainMenu')
         }
     }
