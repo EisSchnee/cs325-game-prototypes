@@ -132,7 +132,7 @@ BasicGame.Game.prototype = {
         } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
             // If the RIGHT key is down, move right
             this.char.body.velocity.x = this.SPEED;
-            this.char.body.play('walkRight');
+            this.char.animations.play('walkRight');
         }else{
             this.char.body.velocity.x = 0;
 
@@ -151,7 +151,7 @@ BasicGame.Game.prototype = {
         } else {
             // Stop moving
             this.char.body.velocity.y = 0;
-            if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
                 this.char.frame = 6;
              }
         }
