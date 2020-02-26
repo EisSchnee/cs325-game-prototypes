@@ -7,7 +7,7 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":48},
 	"sourceSize": {"w":32,"h":48}
-}
+},
 {
 	"filename": "up2",
 	"frame": {"x":32, "y": 0, "w": 32, "h": 48},
