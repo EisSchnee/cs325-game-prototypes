@@ -165,7 +165,9 @@ BasicGame.Game.prototype = {
 
 
     createEnemies: function () {
-        var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
+        var p = 0;
+        while(p < 7) {
+            var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
             var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
             if(Math.random()*2 > 1){
                 xVelocity = xVelocity*-1;
