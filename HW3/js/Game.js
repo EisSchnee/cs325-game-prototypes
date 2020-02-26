@@ -183,51 +183,30 @@ BasicGame.Game.prototype = {
            // this.scoredown.play();
     },
 
-    createEnemy: function() {
-        this.enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'cat1');
-        this.enemy.anchor.setTo(0.5,0.5);
-        this.enemy.animations.add('walkDown', [6,7,8], 10, true);
-        this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
-        this.enemy.animations.add('WalkLeft', [3,4,5], 10, true);
-        this.enemy.animations.add('WalkRight', [9,10,11], 10, true);
-        var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
-        var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
-        this.enemy.body.velocity.x = xVelocity;
-        this.enemy.body.velocity.y = yVelocity;
-        if(yVelocity>Math.abs(2*xVelocity)){
-            this.enemy.animations.play('WalkUp');
-        }else if(yVelocity < -Math.abs(2*xVelocity)){
-            this.enemy.animations.play('WalkDown');
-        }else if(xVelocity > 0){
-            this.enemy.animations.play('WalkRight');
-        }else{
-            this.enemy.animations.play('WalkLeft');
-        }
-        this.enemies.setAll('body.collideWorldBounds', true);
-        this.enemies.setAll('body.bounce.x', 1);
-        this.enemies.setAll('body.bounce.y', 1);
-
-    },
 
     createEnemies: function () {
         var p = 0;
         while(p < 7) {
             this.enemy = this.enemies.create((Math.random()*this.game.world.width), (Math.random()*this.game.world.height), 'cat1');
             this.enemy.anchor.setTo(0.5,0.5);
+            this.enemy.animations.add('walkDown', [6,7,8], 10, true);
+            this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
+            this.enemy.animations.add('WalkLeft', [3,4,5], 10, true);
+            this.enemy.animations.add('WalkRight', [9,10,11], 10, true);
             var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
             var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
             this.enemy.body.velocity.x = xVelocity;
             this.enemy.body.velocity.y = yVelocity;
             p++;
-        }
-        if(yVelocity>Math.abs(2*xVelocity)){
-            this.enemy.animations.play('WalkUp');
-        }else if(yVelocity < -Math.abs(2*xVelocity)){
-            this.enemy.animations.play('WalkDown');
-        }else if(xVelocity > 0){
-            this.enemy.animations.play('WalkRight');
-        }else{
-            this.enemy.animations.play('WalkLeft');
+            if(yVelocity>Math.abs(2*xVelocity)){
+                this.enemy.animations.play('WalkUp');
+            }else if(yVelocity < -Math.abs(2*xVelocity)){
+                this.enemy.animations.play('WalkDown');
+            }else if(xVelocity > 0){
+                this.enemy.animations.play('WalkRight');
+            }else{
+                this.enemy.animations.play('WalkLeft');
+            }
         }
         this.enemies.setAll('body.collideWorldBounds', true);
         this.enemies.setAll('body.bounce.x', 1);

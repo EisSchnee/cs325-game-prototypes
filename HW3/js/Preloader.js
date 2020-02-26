@@ -38,7 +38,7 @@ BasicGame.Preloader.prototype = {
 		this.load.spritesheet('cat4', 'assets/cat_black.png', 32, 48);
 
 		//https://opengameart.org/content/loyalty-lies-items-food
-		this.load.image('cheese', 'cheese.png');
+		this.load.image('cheese', 'assets/cheese.png');
 
 
 		//http://soundbible.com/674-Cat-Meow.html
@@ -46,7 +46,7 @@ BasicGame.Preloader.prototype = {
 
 		http://soundbible.com/912-Eat-Chips.html
 		this.load.audio('lifeSound', ['assets/Eat Chips.mp3'])
-		
+
 		//	**+ lots of other required assets here
 		this.load.image( 'spinnerCircle', 'assets/spinner-circle.png' );
 		this.load.image('failBackground', 'assets/fail-background.png', this.game.width, this.game.height);
@@ -84,4 +84,3 @@ BasicGame.Preloader.prototype = {
 	}
 
 };
-
