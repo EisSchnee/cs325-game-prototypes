@@ -32,10 +32,10 @@ BasicGame.Preloader.prototype = {
 		this.load.spritesheet('char', 'assets/mouse_brown.png', 32, 32);
 
 		//https://opengameart.org/content/cats-rework
-		this.load.spritesheet('cat1', 'assets/cat_orange.png', 32, 48);
-		this.load.spritesheet('cat2', 'assets/cat_white.png', 32, 48);
-		this.load.spritesheet('cat3', 'assets/cat_brown.png', 32, 48);
-		this.load.spritesheet('cat4', 'assets/cat_black.png', 32, 48);
+		this.load.spritesheet('cat1', 'assets/cat_orange.png', 64, 96);
+		this.load.spritesheet('cat2', 'assets/cat_white.png', 64, 96);
+		this.load.spritesheet('cat3', 'assets/cat_brown.png', 64, 96);
+		this.load.spritesheet('cat4', 'assets/cat_black.png', 64, 96);
 
 		//https://opengameart.org/content/loyalty-lies-items-food
 		this.load.image('cheese', 'assets/cheese.png');
