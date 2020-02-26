@@ -193,10 +193,10 @@ BasicGame.Game.prototype = {
 
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-        this.food.destroy();
+        /*this.food.destroy();
         this.char.destroy();
         this.objects = [];
-        this.score = 1;
+        this.score = 1;*/
         if(val == 0){
             this.state.start('Fail');
         }else if(val == 1){
