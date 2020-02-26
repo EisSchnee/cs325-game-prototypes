@@ -112,9 +112,6 @@ BasicGame.Game.prototype = {
 
     damage: function(player, enemy) {
         this.score--;
-        if(this.ctr == 0){
-            this.quitGame(2);
-        }
         this.scoredown.play();
         enemy.kill();
         switch(this.score){
