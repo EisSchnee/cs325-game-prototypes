@@ -25,11 +25,12 @@ BasicGame.Preloader.prototype = {
 		
 		//	Here we load the rest of the assets our game needs.
 		//	As this is just a Project Template I've not provided these assets, swap them for your own.
-		//this.load.image('titlePage', 'assets/title.jpg');
 		this.load.atlas('continue', 'assets/pause-continue.png', 'assets/continue.json');
 		
 		this.load.image('paddle1', 'assets/mania-note1.png');
 		this.load.image('paddle2', 'assets/mania-noteS.png');
+		this.load.image('paddle3', 'assets/mania-note1(1).png');
+		this.load.image('paddle4', 'assets/mania-noteS(1).png');
 
 		//http://pixelartmaker.com/art/f3d0e0de98eb5f2
 		this.load.image('ball', 'assets/PixelArt.png');
