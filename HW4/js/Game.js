@@ -147,41 +147,41 @@ BasicGame.Game.prototype = {
         //this.text.setText('Score: ' + this.score);
         if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
             // If the LEFT key is down, move left
-            this.paddlebottom.body.velocity.x = -this.speed;
+            this.paddlebottom.body.velocity.x = -speed;
         } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
             // If the RIGHT key is down, move right
-            this.paddlebottom.body.velocity.x = this.speed;
+            this.paddlebottom.body.velocity.x = speed;
         }else{
             this.paddlebottom.body.velocity.x = 0;
 
 
         } if (this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             // If the UP key is down, move up
-            this.paddleright.body.velocity.y = -this.speed;
+            this.paddleright.body.velocity.y = -speed;
 
         } else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
             // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
-            this.paddleright.body.velocity.y = this.speed;
+            this.paddleright.body.velocity.y = speed;
         } else {
             // Stop moving
             this.paddleright.body.velocity.y = 0;
 
 
         } if (this.input.keyboard.isDown(Phaser.KeyCode.A)) {
-            this.paddletop.body.velocity.x = -this.speed;
+            this.paddletop.body.velocity.x = -speed;
 
          } else if(this.input.keyboard.isDown(Phaser.KeyCode.D)) {
-        this.paddletop.body.velocity.x = this.speed;
+        this.paddletop.body.velocity.x = speed;
          } else {
         // Stop moving
         this.paddletop.body.velocity.x = 0;
          
     
         } if (this.input.keyboard.isDown(Phaser.KeyCode.W)) {
-            this.paddleleft.body.velocity.y = -this.speed;
+            this.paddleleft.body.velocity.y = -speed;
 
         } else if(this.input.keyboard.isDown(Phaser.KeyCode.S)) {
-            this.paddleleft.body.velocity.y = this.speed;
+            this.paddleleft.body.velocity.y = speed;
         } else {
             // Stop moving
             this.paddleleft.body.velocity.y = 0;
