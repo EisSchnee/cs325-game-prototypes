@@ -120,7 +120,7 @@ BasicGame.Game.prototype = {
         this.ctr = 0;
 
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        this.text = this.game.add.text( 50, 50, 'Score: 0', style );
+        this.text = this.game.add.text( 100, 50, 'Score: 0', style );
         this.text.anchor.setTo( 0.5, 0.0 );
 
     },
