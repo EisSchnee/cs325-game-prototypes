@@ -37,7 +37,7 @@ BasicGame.Game = function (game) {
     this.paddles = null;
 
     this.PADDLESPEED = 150;
-    this.BALLSPEED = 75;
+    this.BALLSPEED = 100;
     this.timer = 0;
 
     //this.objects = [0];
@@ -191,8 +191,16 @@ BasicGame.Game.prototype = {
 
         this.timer++;
         if((this.timer % 100) == 0){
-            this.ball.body.velocity.x = this.ball.body.velocity.x + 1;
-            this.ball.body.velocity.y = this.ball.body.velocity.y + 1;
+            if(this.ball.body.velocity.x > 0){
+                this.ball.body.velocity.x = this.ball.body.velocity.x + 1;
+            }else{
+                this.ball.body.velocity.x = this.ball.body.velocity.x - 1;
+            }
+            if(this.ball.body.velocity.y > 0){
+                this.ball.body.velocity.y = this.ball.body.velocity.y + 1;
+            }else{
+                this.ball.body.velocity.y = this.ball.body.velocity.y - 1;
+            }
             this.score++;
             this.text.setText('Score: ' + this.score);
         }
