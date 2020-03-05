@@ -66,8 +66,8 @@ BasicGame.Game.prototype = {
     create: function () {
 
         this.paddlebottom = this.game.add.sprite( this.game.world.centerX, this.game.world.height - 10, 'paddle2' );
-        this.paddleright = this.game.add.sprite( this.game.world.width-10, this.game.world.centerY, 'paddle2' );
-        this.paddleleft = this.game.add.sprite( 10, this.game.world.centerY, 'paddle1' );
+        this.paddleright = this.game.add.sprite( this.game.world.width-10, this.game.world.centerY, 'paddle4' );
+        this.paddleleft = this.game.add.sprite( 10, this.game.world.centerY, 'paddle3' );
         this.paddletop = this.game.add.sprite( this.game.world.centerX, 10, 'paddle1' );
 
         this.paddletop.enableBody = true;;
@@ -79,13 +79,11 @@ BasicGame.Game.prototype = {
         this.paddleright.anchor.setTo(0.5, 0.5);
         this.game.physics.enable(this.paddleright, Phaser.Physics.ARCADE);
         this.paddleright.body.collideWorldBounds = true; 
-        this.paddleright.angle = 90;
 
         this.paddleleft.enableBody = true;
         this.paddleleft.anchor.setTo(0.5, 0.5);
         this.game.physics.enable(this.paddleleft, Phaser.Physics.ARCADE);
         this.paddleleft.body.collideWorldBounds = true;
-        this.paddleleft.angle = 90;
 
         this.paddlebottom.enableBody = true;
         this.paddlebottom.anchor.setTo(0.5, 0.5);
