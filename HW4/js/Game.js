@@ -131,10 +131,10 @@ BasicGame.Game.prototype = {
 
     update: function () {
 
-        this.physics.arcade.collide(this.ball, this.paddleleft, this.collideside, null, this);
-        this.physics.arcade.collide(this.ball, this.paddleright, this.collideside, null, this);
-        this.physics.arcade.collide(this.ball, this.paddletop, this.collideroof, null, this);
-        this.physics.arcade.collide(this.ball, this.paddlebottom, this.collideroof, null, this);
+        this.physics.arcade.collide(this.ball, this.paddleleft, this.collideleft, null, this);
+        this.physics.arcade.collide(this.ball, this.paddleright, this.collideright, null, this);
+        this.physics.arcade.collide(this.ball, this.paddletop, this.collidetop, null, this);
+        this.physics.arcade.collide(this.ball, this.paddlebottom, this.collidebottom, null, this);
         var speed = 0;
 
         if (this.input.keyboard.isDown(Phaser.Keyboard.SHIFT)) {
@@ -199,14 +199,28 @@ BasicGame.Game.prototype = {
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
     },
 
-    collideside: function () {
+    collideleft: function () {
         this.scoreup.play();
         this.ball.body.velocity.x = -this.ball.body.velocity.x;
+        this.ball.x = this.ball.x + 10;
     },
 
-    collideroof: function () {
+    collideright: function () {
+        this.scoreup.play();
+        this.ball.body.velocity.x = -this.ball.body.velocity.x;
+        this.ball.x = this.ball.x - 10;
+    },
+
+    collidetop: function () {
         this.scoreup.play();
         this.ball.body.velocity.y = -this.ball.body.velocity.y;
+        this.ball.y = this.ball.y + 10;
+    },
+
+    collidebottom: function () {
+        this.scoreup.play();
+        this.ball.body.velocity.y = -this.ball.body.velocity.y;
+        this.ball.y = this.ball.y - 10;
     },
 
     quitGame: function (val) {
