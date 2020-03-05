@@ -97,8 +97,6 @@ BasicGame.Game.prototype = {
         this.ball.anchor.setTo(0.5, 0.5);
         this.game.physics.enable(this.ball, Phaser.Physics.ARCADE);
         this.ball.body.collideWorldBounds = false;
-        this.ball.body.bounce.x = 1;
-        this.ball.body.bounce.y = 1;
 
         var yVelocity = (Math.random()*this.BALLSPEED)-(this.BALLSPEED/2);
         var xVelocity = Math.sqrt(((this.BALLSPEED*this.BALLSPEED)/2)-(yVelocity*yVelocity));
