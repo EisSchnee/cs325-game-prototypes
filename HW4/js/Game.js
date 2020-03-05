@@ -56,8 +56,8 @@ BasicGame.Game = function (game) {
 
     //this.text;
 
-    //this.scoreup = new Audio('assets/Eat Chips.mp3');
-    //this.scoredown = new Audio('assets/Cat Meow.mp3');
+    this.scoreup = new Audio('assets/soft-hitclap.wav');
+    this.scoredown = new Audio('assets/seeya.wav');
     
 };
 
@@ -133,8 +133,10 @@ BasicGame.Game.prototype = {
 
     update: function () {
 
-       /* this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);// error in this.char.body
-        this.physics.arcade.overlap(this.char, this.food, this.point, null, this);*/
+        this.physics.arcade.collide(this.ball, this.paddleleft, this.playSound);
+        this.physics.arcade.collide(this.ball, this.paddleright, this.playSound);
+        this.physics.arcade.collide(this.ball, this.paddletop, this.playSound);
+        this.physics.arcade.collide(this.ball, this.paddlebottom, this.playSound);
         var speed = 0;
 
         if (this.input.keyboard.isDown(Phaser.keyboard.SHIFT)) {
@@ -202,6 +204,9 @@ BasicGame.Game.prototype = {
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
     },
 
+    playSound: function () {
+        this.scoreup.play();
+    },
 
     quitGame: function (val) {
 
@@ -211,6 +216,7 @@ BasicGame.Game.prototype = {
         this.char.destroy();
         this.objects = [];
         this.score = 1;*/
+        this.scoredown.play();
         if (val == 0) {
             this.state.start('Fail');
         } else if (val == 1) {

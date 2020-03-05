@@ -32,7 +32,10 @@ BasicGame.Preloader.prototype = {
 		this.load.image('paddle2', 'assets/mania-noteS.png');
 
 		//http://pixelartmaker.com/art/f3d0e0de98eb5f2
-		this.load.image('ball', 'PixelArt.png');
+		this.load.image('ball', 'assets/PixelArt.png');
+
+		this.load.audio('lifeSound', ['assets/soft-hitclap.wav'])
+		this.load.audio('hitSound', ['assets/seeya.wav']);
 	},
 
 	create: function () {
