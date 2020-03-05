@@ -209,7 +209,7 @@ BasicGame.Game.prototype = {
     collideroof: function () {
         this.scoreup.play();
         this.ball.body.velocity.y = -this.ball.body.velocity.y;
-    }
+    },
 
     quitGame: function (val) {
 
