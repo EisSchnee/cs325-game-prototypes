@@ -114,11 +114,11 @@ BasicGame.Game.prototype = {
             Phaser.Keyboard.RIGHT,
             Phaser.Keyboard.UP,
             Phaser.Keyboard.DOWN,
-            Phaser.keyboard.W,
-            Phaser.keyboard.A,
-            Phaser.keyboard.S,
-            Phaser.keyboard.D,
-            Phaser.keyboard.SHIFT
+            Phaser.KeyCode.W,
+            Phaser.KeyCode.A,
+            Phaser.KeyCode.S,
+            Phaser.KeyCode.D,
+            Phaser.Keyboard.SHIFT
         ]);
 
         this.ctr = 0;
