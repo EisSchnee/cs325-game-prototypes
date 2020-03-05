@@ -191,7 +191,7 @@ BasicGame.Game.prototype = {
         }
 
         if (this.ball.x > this.game.width || this.ball.x < 0 || this.ball.y > this.game.height || this.ball.y < 0){
-            fail();
+            this.quitGame(0);
         }
 
         this.timer++;
