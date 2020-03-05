@@ -39,7 +39,8 @@ BasicGame.Boot.prototype = {
 
         //https://www.vectorstock.com/royalty-free-vector/chicken-neon-sign-vector-23966486
         this.load.image('menuBackground', 'assets/23966486.jpg', this.game.width, this.game.height);
-        //this.load.image('preloaderSlider', 'assets/taiko-slider.png');
+        
+        this.load.image('preloaderSlider', 'assets/taiko-slider.png');
 
         //https://www.pngguru.com/free-transparent-background-png-clipart-lgyzi
         this.load.image('failBackground', 'assets/japanese-food-pixel-sunny-side-up-egg-png-clipart.jpg')

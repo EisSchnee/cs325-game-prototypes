@@ -133,13 +133,13 @@ BasicGame.Game.prototype = {
 
     update: function () {
 
-        this.physics.arcade.collide(this.ball, this.paddleleft, this.playSound);
-        this.physics.arcade.collide(this.ball, this.paddleright, this.playSound);
-        this.physics.arcade.collide(this.ball, this.paddletop, this.playSound);
-        this.physics.arcade.collide(this.ball, this.paddlebottom, this.playSound);
+        this.physics.arcade.collide(this.ball, this.paddleleft, this.playSound, null, this);
+        this.physics.arcade.collide(this.ball, this.paddleright, this.playSound, null, this);
+        this.physics.arcade.collide(this.ball, this.paddletop, this.playSound, null, this);
+        this.physics.arcade.collide(this.ball, this.paddlebottom, this.playSound, null, this);
         var speed = 0;
 
-        if (this.input.keyboard.isDown(Phaser.keyboard.SHIFT)) {
+        if (this.input.keyboard.isDown(Phaser.Keyboard.SHIFT)) {
             speed = this.PADDLESPEED * 2;
         }else{
             speed = this.PADDLESPEED;
@@ -167,10 +167,10 @@ BasicGame.Game.prototype = {
             this.paddleright.body.velocity.y = 0;
 
 
-        } if (this.input.keyboard.isDown(Phaser.Keyboard.A)) {
+        } if (this.input.keyboard.isDown(Phaser.KeyCode.A)) {
             this.paddletop.body.velocity.x = -this.speed;
 
-         } else if(this.input.keyboard.isDown(Phaser.Keyboard.D)) {
+         } else if(this.input.keyboard.isDown(Phaser.KeyCode.D)) {
         // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
         this.paddletop.body.velocity.x = this.speed;
          } else {
@@ -178,11 +178,11 @@ BasicGame.Game.prototype = {
         this.paddletop.body.velocity.x = 0;
          
     
-        } if (this.input.keyboard.isDown(Phaser.Keyboard.W)) {
+        } if (this.input.keyboard.isDown(Phaser.KeyCode.W)) {
             // If the UP key is down, move up
             this.paddleleft.body.velocity.y = -this.speed;
 
-        } else if(this.input.keyboard.isDown(Phaser.Keyboard.S)) {
+        } else if(this.input.keyboard.isDown(Phaser.KeyCode.S)) {
             // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
             this.paddleleft.body.velocity.y = this.speed;
         } else {
