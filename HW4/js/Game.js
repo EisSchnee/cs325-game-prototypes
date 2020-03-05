@@ -171,7 +171,6 @@ BasicGame.Game.prototype = {
             this.paddletop.body.velocity.x = -this.speed;
 
          } else if(this.input.keyboard.isDown(Phaser.KeyCode.D)) {
-        // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
         this.paddletop.body.velocity.x = this.speed;
          } else {
         // Stop moving
@@ -179,11 +178,9 @@ BasicGame.Game.prototype = {
          
     
         } if (this.input.keyboard.isDown(Phaser.KeyCode.W)) {
-            // If the UP key is down, move up
             this.paddleleft.body.velocity.y = -this.speed;
 
         } else if(this.input.keyboard.isDown(Phaser.KeyCode.S)) {
-            // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
             this.paddleleft.body.velocity.y = this.speed;
         } else {
             // Stop moving
@@ -195,7 +192,7 @@ BasicGame.Game.prototype = {
         }
 
         this.timer++;
-        if((this.timer % 1000) == 0){
+        if((this.timer % 100) == 0){
             this.ball.body.velocity.x = this.ball.body.velocity.x + 1;
             this.ball.body.velocity.y = this.ball.body.velocity.y + 1;
             this.score++;
@@ -212,10 +209,7 @@ BasicGame.Game.prototype = {
 
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-        /*this.food.destroy();
-        this.char.destroy();
-        this.objects = [];
-        this.score = 1;*/
+
         this.scoredown.play();
         if (val == 0) {
             this.state.start('Fail');
