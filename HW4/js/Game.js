@@ -209,26 +209,26 @@ BasicGame.Game.prototype = {
 
     collideleft: function () {
         this.scoreup.play();
-        this.ball.body.velocity.x = -this.ball.body.velocity.x;
-        this.ball.x = this.ball.x + 10;
+        this.ball.body.velocity.x = -(this.ball.body.velocity.x*2);
+        this.ball.x = this.ball.x + 1;
     },
 
     collideright: function () {
         this.scoreup.play();
-        this.ball.body.velocity.x = -this.ball.body.velocity.x;
-        this.ball.x = this.ball.x - 10;
+        this.ball.body.velocity.x = -(this.ball.body.velocity.x*2);
+        this.ball.x = this.ball.x - 1;
     },
 
     collidetop: function () {
         this.scoreup.play();
-        this.ball.body.velocity.y = -this.ball.body.velocity.y;
-        this.ball.y = this.ball.y + 10;
+        this.ball.body.velocity.y = -(this.ball.body.velocity.y*2);
+        this.ball.y = this.ball.y + 1;
     },
 
     collidebottom: function () {
         this.scoreup.play();
-        this.ball.body.velocity.y = -this.ball.body.velocity.y;
-        this.ball.y = this.ball.y - 10;
+        this.ball.body.velocity.y = -(this.ball.body.velocity.y*2);
+        this.ball.y = this.ball.y - 1;
     },
 
     quitGame: function (val) {
