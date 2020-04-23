@@ -59,7 +59,7 @@ BasicGame.World3.prototype = {
     var style1 = { font: "25px Verdana", fill: "#9999ff", align: "center" };
     var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
         this.enemy_move_text = this.game.add.text( this.game.world.centerX + 200, 200, 'Enemy is thinking...', style1 );
-        this.enemy_health_text = this.game.add.text( this.game.world.centerX + 200, 200, 'Enemy health: 100', style1 );
+        this.enemy_health_text = this.game.add.text( this.game.world.centerX + 200, 100, 'Enemy health: 100', style1 );
         this.player_health_text = this.game.add.text(200, 200, 'health: 100', style2)
         this.enemy_move_text.anchor.setTo( 0.5, 0.0 );
         this.enemy_health_text.anchor.setTo( 0.5, 0.0 );
@@ -143,7 +143,7 @@ BasicGame.World3.prototype = {
         }else if(this.nextmove != null){
             this.enemy_move_text.setText('Enemy is healing!');
         }
-        if( this.health){
+        if( this.health <= 0){
             this.quitGame(0);
         }
    },

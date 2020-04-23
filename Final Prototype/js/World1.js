@@ -31,7 +31,7 @@ BasicGame.World1 = function (game) {
 BasicGame.World1.prototype = {
 
     create: function() {
-        this.game.physics.arcade.gravity.y = 2600;
+        this.game.physics.arcade.gravity.y = 1000;
         // Create the map. 
         //this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
