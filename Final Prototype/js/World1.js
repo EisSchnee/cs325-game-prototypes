@@ -27,7 +27,6 @@ BasicGame.World1 = function (game) {
 BasicGame.World1.prototype = {
 
     create: function() {
-        this.game.physics.enable( bouncy, Phaser.Physics.ARCADE );
         this.game.physics.arcade.gravity.y = 2600;
         // Create the map. 
         map = game.add.tilemap('map');
@@ -50,6 +49,7 @@ BasicGame.World1.prototype = {
         this.char = this.game.add.sprite( game.world.X + 100, game.world.centerY-200, 'char' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
+        this.game.physics.enable( this.char, Phaser.Physics.ARCADE );
         this.char.anchor.setTo( 0.5, 0.5 );
         
         // Turn on the arcade physics engine for this sprite.

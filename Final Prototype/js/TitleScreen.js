@@ -54,7 +54,6 @@ BasicGame.TitleScreen = function (game) {
 BasicGame.TitleScreen.prototype = {
 
     create: function () {
-        this.game.physics.enable(this.char, Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity.y = 2600;
 
         this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY+100, 'char' );
@@ -64,8 +63,8 @@ BasicGame.TitleScreen.prototype = {
         this.char.animations.add('walkUp', [0,1,2], 10, true);
         this.char.animations.add('walkLeft', [9,10,11], 10, true);
     */
-
-        this.char.enableBody = true;
+        this.game.physics.enable(this.char, Phaser.Physics.ARCADE);
+        //this.char.enableBody = true;
         this.char.anchor.setTo(0.5, 0.5);
 
         this.char.body.collideWorldBounds = true;
