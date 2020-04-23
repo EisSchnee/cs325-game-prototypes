@@ -130,7 +130,7 @@ BasicGame.World3.prototype = {
             if(this.heavy){
                 this.enemy_health += 30;
                 this.enemy_health_text.setText('health: ' + this.enemy_health);
-            else{
+            }else{
                 this.enemy_health += 8;
                 this.enemy_health_text.setText('health: ' + this.enemy_health);
             }
