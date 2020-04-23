@@ -50,6 +50,12 @@ BasicGame.Boot.prototype = {
         this.load.image('world3', 'assets/world3_portal.png');
         this.load.image('ground', 'assets/groundblock.png');
         
+        //https://opengameart.org/content/cats-rework
+		this.load.spritesheet('cat1', 'assets/cat_orange.png', 64, 96);
+		this.load.spritesheet('cat2', 'assets/cat_white.png', 64, 96);
+		this.load.spritesheet('cat3', 'assets/cat_brown.png', 64, 96);
+		this.load.spritesheet('cat4', 'assets/cat_black.png', 64, 96);
+
         this.load.tilemap('map', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
         // alternatively, from .csv file
         //game.load.tilemap('map', 'assets/tilemap_example.csv', null, Phaser.Tilemap.CSV);

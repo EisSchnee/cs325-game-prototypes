@@ -61,49 +61,49 @@ BasicGame.World3.prototype = {
    },
 
    attack: function () {
-        if(prepared){
+        if(this.prepared){
             enemy_health -= 15;
         }else{
             enemy_health -= 10;
         }
 
         this.prepared = false;
-        Enemyturn(0);
+        this.EnemyTurn(0);
    },
 
    defend: function () { 
         this.defending = true;
-        Enemyturn(1);
+        this.EnemyTurn(1);
    },
 
    prepare: function () {
         this.prepared - true;
-        Enemyturn(2);
+        this.EnemyTurn(2);
 
    },
 
-   Enemyturn: function (value) {
+   EnemyTurn: function (value) {
 
-        if(nextmove != null && nextmove > 1){
-            if(defending && !prepared){
-                if(heavy){
-                    health -= 25;
+        if(this.nextmove != null && this.nextmove > 1){
+            if(this.defending && !this.prepared){
+                if(this.heavy){
+                    this.health -= 25;
                 }else{
-                    health -= 10;
+                    this.health -= 10;
                 }
-            }else if( !defending){
-                if(heavy){
-                    health -= 65;
+            }else if( !this.defending){
+                if(this.heavy){
+                    this.health -= 65;
                 }else{
-                    health-= 30;
+                    this.health-= 30;
                 }
             }
-        }else if(nextmove != null && val > .3 && !heavy){
+        }else if(this.nextmove != null && this.nextmove > .3 && !this.heavy){
             this.heavy = true;
-        }else if(nextmove != null){
+        }else if(this.nextmove != null){
 
         }
-        nextmove = math.random()*3;
+        this.nextmove = math.random()*3;
    },
 
    quitGame: function (val) {

@@ -52,7 +52,7 @@ BasicGame.World2 = function (game) {
 BasicGame.World2.prototype = {
 
     create: function () {
-
+        this.game.physics.arcade.gravity.y = 0;
      
         this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'char' );
        /* this.char.frame = 6;
