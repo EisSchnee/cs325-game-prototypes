@@ -124,6 +124,7 @@ BasicGame.World3.prototype = {
                 this.health -= 5;
                 this.player_health_text.setText('health: ' + this.health);
             }
+            this.heavy = false;
         }else if(this.nextmove != null && this.nextmove > .3 && !this.heavy){
             this.heavy = true;
         }else if(this.nextmove != null){
