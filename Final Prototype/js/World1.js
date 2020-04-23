@@ -21,11 +21,12 @@ BasicGame.World1 = function (game) {
     this.ground;
     this.map = null;
     this.layer1 = null;
-    this.score = 5;
+    this.score = 1;
 
     this.enemies = null;
 
     this.enemy = null;
+    this.food = null;
 };
 
 BasicGame.World1.prototype = {
@@ -87,6 +88,7 @@ BasicGame.World1.prototype = {
         this.enemies.enableBody = true;
         this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
         this.createEnemies();
+        this.createFood();
 
     },
     
@@ -118,6 +120,44 @@ BasicGame.World1.prototype = {
            // Jump when the player is touching the ground and the up arrow is pressed
            this.char.body.velocity.y = -1000;
        }
+    },
+
+    point: function () {
+        this.score++;
+        //this.scoreup.play();
+        var ctr = 0;
+        this.createEnemies();
+        this.food.destroy();
+        this.createFood();
+        switch (this.score) {
+            case 2:
+                //this.char.loadTexture('char2', 0, false);
+                break;
+            case 3:
+                //this.char.loadTexture('char3', 0, false);
+                break;
+            case 4:
+                //this.char.loadTexture('char4', 0, false);
+                break;
+            case 5:
+                this.quitGame(1);
+                break;
+            default:
+            //this.char.loadTexture('char4', 0, false);
+        }
+        this.char.resetFrame();
+        this.char.anchor.setTo(0.5, 0.5);
+        if(this.score == 3){
+            this.quitGame(1);
+        }
+    },
+
+    createFood: function() {
+        var food = this.game.add.sprite((Math.random()*this.game.world.width), 50, 'match');
+        this.game.physics.enable(food, Phaser.Physics.ARCADE);
+        food.anchor.setTo(0.5, 0.5);
+        food.body.collideWorldBounds = false;
+        this.food = food;
     },
 
     createEnemies: function () {

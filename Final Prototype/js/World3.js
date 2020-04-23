@@ -95,7 +95,7 @@ BasicGame.World3.prototype = {
    },
 
    prepare: function () {
-        this.prepared - true;
+        this.prepared = true;
         this.EnemyTurn(2);
 
    },
