@@ -68,7 +68,7 @@ BasicGame.World1.prototype = {
             this.ground.add(groundBlock);
         }
 
-        this.game.camera.follow(char);
+        this.game.camera.follow(this.char);
         
 
         this.game.input.keyboard.addKeyCapture([
@@ -102,11 +102,11 @@ BasicGame.World1.prototype = {
            this.char.body.velocity.x = 0;
        }
 
-       var onTheGround = this.player.body.touching.down;
+       var onTheGround = this.char.body.touching.down;
 
-       if (onTheGround && this.input.keyboarde.isDown(Phaser.Keyboard.UP)) {
+       if (onTheGround && this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
            // Jump when the player is touching the ground and the up arrow is pressed
-           this.player.body.velocity.y = -1000;
+           this.char.body.velocity.y = -1000;
        }
     }
 };
