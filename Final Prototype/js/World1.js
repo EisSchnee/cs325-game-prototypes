@@ -38,9 +38,9 @@ BasicGame.World1.prototype = {
         
         // Create a layer from the map
         //using the layer name given in the .json file
-        this.layer1 = this.map.createLayer('Tile Layer 1');
+        //this.layer1 = this.map.createLayer('Tile Layer 1');
         //for csv files
-        //layer1 = map.createLayer(0);
+        this.layer1 = this.map.createLayer(0);
         
         //  Resize the world
         this.layer1.resizeWorld();
