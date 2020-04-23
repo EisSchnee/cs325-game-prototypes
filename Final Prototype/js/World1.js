@@ -79,7 +79,7 @@ BasicGame.World1.prototype = {
             Phaser.Keyboard.DOWN
         ]);
         
-        createEnemies();
+        this.createEnemies();
 
     },
     
