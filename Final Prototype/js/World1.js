@@ -27,8 +27,8 @@ BasicGame.World1 = function (game) {
 BasicGame.World2.prototype = {
 
     create: function() {
-
-        game.physics.arcade.gravity.y = 2600;
+        this.game.physics.enable( bouncy, Phaser.Physics.ARCADE );
+        this.game.physics.arcade.gravity.y = 2600;
         // Create the map. 
         map = game.add.tilemap('map');
         // for csv files specify the tile size.
@@ -47,13 +47,12 @@ BasicGame.World2.prototype = {
         layer1.resizeWorld();
         
         // Create a sprite at the center of the screen using the 'logo' image.
-        this.char = game.add.sprite( game.world.X + 100, game.world.centerY-200, 'char' );
+        this.char = this.game.add.sprite( game.world.X + 100, game.world.centerY-200, 'char' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         this.char.anchor.setTo( 0.5, 0.5 );
         
         // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
         // Make it bounce off of the world bounds.
         this.char.body.collideWorldBounds = true;
         
@@ -83,7 +82,7 @@ BasicGame.World2.prototype = {
 
     },
     
-    function update() {
+    update: function() {
         // Accelerate the 'logo' sprite towards the cursor,
         // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
         // in X or Y.
