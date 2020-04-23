@@ -60,7 +60,7 @@ BasicGame.Game.prototype = {
      
    },
 
-   attack; function () {
+   attack: function () {
         if(prepared){
             enemy_health -= 15;
         }else{
@@ -71,18 +71,18 @@ BasicGame.Game.prototype = {
         Enemyturn(0);
    }
 
-   defend; function () { 
+   defend: function () { 
         this.defending = true;
         Enemyturn(1);
    }
 
-   prepare; function () {
+   prepare: function () {
         this.prepared - true;
         Enemyturn(2);
 
    }
 
-   Enemyturn; function (value) {
+   Enemyturn: function (value) {
 
         if(nextmove != null && nextmove > 1){
             if(defending && !prepared){
