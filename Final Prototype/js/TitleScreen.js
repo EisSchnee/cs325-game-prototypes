@@ -76,10 +76,22 @@ BasicGame.TitleScreen.prototype = {
             Phaser.Keyboard.DOWN
         ]);
 
-        this.portal1 = this.game.add.sprite(50, this.game.world.centerY + 150, 'world1');
-        this.portal2 = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY + 150, 'world2');
-        this.portal3 = this.game.add.sprite(this.game.world.width - 50, this.game.world.centerY + 150, 'world3');
-        this.loadbar = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loadbar');
+        this.portal1 = this.game.add.sprite(50, this.game.world.centerY + 50, 'world1');
+        this.portal2 = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY + 50, 'world2');
+        this.portal3 = this.game.add.sprite(this.game.world.width - 50, this.game.world.centerY + 50, 'world3');
+        this.loadbar = this.game.add.sprite(this.game.world.centerX - 150, this.game.world.centerY - 50, 'loadbar');
+        this.game.physics.enable(this.loadbar, Phaser.Physics.ARCADE);
+        this.loadbar.body.immovable = true;
+        this.loadbar.body.allowGravity = false;
+        this.game.physics.enable(this.portal1, Phaser.Physics.ARCADE);
+        this.portal1.body.immovable = true;
+        this.portal1.body.allowGravity = false;
+        this.game.physics.enable(this.portal2, Phaser.Physics.ARCADE);
+        this.portal2.body.immovable = true;
+        this.portal2.body.allowGravity = false;
+        this.game.physics.enable(this.portal3, Phaser.Physics.ARCADE);
+        this.portal3.body.immovable = true;
+        this.portal3.body.allowGravity = false;
         this.ctr = 0;
         /*var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
         this.text = this.game.add.text( 15, 15, 'Score: 0', style );
@@ -124,7 +136,7 @@ BasicGame.TitleScreen.prototype = {
 
         if (onTheGround && this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             // Jump when the player is touching the ground and the up arrow is pressed
-            this.char.body.velocity.y = -800;
+            this.char.body.velocity.y = -1000;
         }
         /*} if (this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             // If the UP key is down, move up
