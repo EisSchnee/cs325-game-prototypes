@@ -49,7 +49,7 @@ BasicGame.World2 = function (game) {
 
 };
 
-BasicGame.Game.prototype = {
+BasicGame.World2.prototype = {
 
     create: function () {
 

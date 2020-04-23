@@ -51,7 +51,7 @@ BasicGame.TitleScreen = function (game) {
     
 };
 
-BasicGame.Game.prototype = {
+BasicGame.TitleScreen.prototype = {
 
     create: function () {
 

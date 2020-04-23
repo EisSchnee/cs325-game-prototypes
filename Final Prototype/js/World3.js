@@ -43,7 +43,7 @@ BasicGame.World3 = function (game) {
     this.nextmove = null;
 };
 
-BasicGame.Game.prototype = {
+BasicGame.World3.prototype = {
 
    create: function () {
     this.attack_button = this.add.button( 100, game.world.Y -100, 'attack_button', this.attack, this, 'over', 'out', 'down');

@@ -22,7 +22,10 @@ BasicGame.World1 = function (game) {
     var map;
     var layer1;
     var bouncy;
-    
+};
+
+BasicGame.World2.prototype = {
+
     function create() {
 
         game.physics.arcade.gravity.y = 2600;
