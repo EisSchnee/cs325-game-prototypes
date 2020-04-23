@@ -29,7 +29,7 @@ BasicGame.World1.prototype = {
     create: function() {
         this.game.physics.arcade.gravity.y = 2600;
         // Create the map. 
-        map = game.add.tilemap('map');
+        map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
         //map = game.add.tilemap('map', 32, 32);
         
@@ -107,7 +107,7 @@ BasicGame.World1.prototype = {
 
        if (onTheGround && this.input.keyboarde.isDown(Phaser.Keyboard.UP)) {
            // Jump when the player is touching the ground and the up arrow is pressed
-           this.player.body.velocity.y = -800;
+           this.player.body.velocity.y = -1000;
        }
     }
 };

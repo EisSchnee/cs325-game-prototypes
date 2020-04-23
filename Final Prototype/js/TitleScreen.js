@@ -76,10 +76,10 @@ BasicGame.TitleScreen.prototype = {
             Phaser.Keyboard.DOWN
         ]);
 
-        this.portal1 = this.game.add.sprite(50, this.game.world.centerY + 50, 'world1');
-        this.portal2 = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY + 50, 'world2');
-        this.portal3 = this.game.add.sprite(this.game.world.width - 50, this.game.world.centerY + 50, 'world3');
-        this.loadbar = this.game.add.sprite(this.game.world.centerX - 150, this.game.world.centerY - 50, 'loadbar');
+        this.portal1 = this.game.add.sprite(30, this.game.world.centerY + 50, 'world1');
+        this.portal2 = this.game.add.sprite(this.game.world.centerX - 50, this.game.world.centerY + 50, 'world2');
+        this.portal3 = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'world3');
+        this.loadbar = this.game.add.sprite(this.game.world.centerX - 150, this.game.world.centerY - 75, 'loadbar');
         this.game.physics.enable(this.loadbar, Phaser.Physics.ARCADE);
         this.loadbar.body.immovable = true;
         this.loadbar.body.allowGravity = false;
