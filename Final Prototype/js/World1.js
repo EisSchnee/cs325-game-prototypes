@@ -30,7 +30,7 @@ BasicGame.World1.prototype = {
         // Create the map. 
         //this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
-        map = game.add.tilemap('map', 20, 60);
+        map = this.game.add.tilemap('map', 20, 60);
         
         //add tiles
         this.map.addTilesetImage('tiles');
