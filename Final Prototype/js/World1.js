@@ -22,6 +22,10 @@ BasicGame.World1 = function (game) {
     this.map = null;
     this.layer1 = null;
     this.score = 5;
+
+    this.enemies = null;
+
+    this.enemy = null;
 };
 
 BasicGame.World1.prototype = {

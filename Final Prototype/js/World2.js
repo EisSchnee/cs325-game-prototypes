@@ -240,8 +240,8 @@ BasicGame.World2.prototype = {
         }
         this.char.resetFrame();
         this.char.anchor.setTo(0.5, 0.5);
-        if(this.score == 1){
-            quitGame(1);
+        if(this.score == 2){
+            this.quitGame(1);
         }
     },
 
