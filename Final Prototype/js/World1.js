@@ -34,18 +34,18 @@ BasicGame.World1.prototype = {
     create: function() {
         this.game.physics.arcade.gravity.y = 1000;
         // Create the map. 
-        //this.map = this.game.add.tilemap('map');
+        this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
-        this.map = this.game.add.tilemap('map', 32, 64);
+       // this.map = this.game.add.tilemap('map', 32, 64);
         
         //add tiles
         this.map.addTilesetImage('tiles');
         
         // Create a layer from the map
         //using the layer name given in the .json file
-        //this.layer1 = this.map.createLayer('Tile Layer 1');
+        this.layer1 = this.map.createLayer('Tile Layer 1');
         //for csv files
-        this.layer1 = this.map.createLayer(0);
+        //this.layer1 = this.map.createLayer(0);
         
         //  Resize the world
         this.layer1.resizeWorld();
@@ -102,7 +102,7 @@ BasicGame.World1.prototype = {
        this.game.physics.arcade.collide(this.char, this.ground);
        this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
        this.physics.arcade.overlap(this.char, this.food, this.point, null, this);
-       
+
        if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
            // If the LEFT key is down, move left
            this.char.body.velocity.x = -this.SPEED;

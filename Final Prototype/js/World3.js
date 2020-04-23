@@ -140,9 +140,9 @@ BasicGame.World3.prototype = {
         this.nextmove = Math.random()*3;
         if(this.nextmove > 1){
             this.enemy_move_text.setText('Enemy is attacking!');
-        }else if(this.nextmove > .3 && !this.heavy){
+        }else if(this.nextmove > .3){
             this.enemy_move_text.setText('Enemy is preparing his next move!');
-        }else if(this.nextmove != null){
+        }else {
             this.enemy_move_text.setText('Enemy is healing!');
         }
         if( this.health <= 0){
