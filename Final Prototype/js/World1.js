@@ -21,6 +21,7 @@ BasicGame.World1 = function (game) {
     this.ground;
     this.map = null;
     this.layer1 = null;
+    this.score = 5;
 };
 
 BasicGame.World1.prototype = {
@@ -30,7 +31,7 @@ BasicGame.World1.prototype = {
         // Create the map. 
         //this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
-        map = this.game.add.tilemap('map', 20, 60);
+        this.map = this.game.add.tilemap('map', 20, 60);
         
         //add tiles
         this.map.addTilesetImage('tiles');
@@ -78,6 +79,7 @@ BasicGame.World1.prototype = {
             Phaser.Keyboard.DOWN
         ]);
         
+        createEnemies();
 
     },
     
@@ -89,7 +91,8 @@ BasicGame.World1.prototype = {
         // new trajectory.
        // bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
        this.game.physics.arcade.collide(this.char, this.ground);
-
+       this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
+       
        if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
            // If the LEFT key is down, move left
            this.char.body.velocity.x = -this.SPEED;
@@ -108,5 +111,95 @@ BasicGame.World1.prototype = {
            // Jump when the player is touching the ground and the up arrow is pressed
            this.char.body.velocity.y = -1000;
        }
+    },
+
+    createEnemies: function () {
+        var p = 0;
+        while(p < 7) {
+            var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
+            var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
+            if(Math.random()*2 > 1){
+                xVelocity = xVelocity*-1;
+            }
+            var PositionX = null;
+            var PositionY = null;
+            if(yVelocity>Math.abs(xVelocity)){
+                PositionY = this.game.world.height;
+                PositionX = Math.random()*this.game.world.width;
+            }else if(yVelocity < -Math.abs(xVelocity)){
+                PositionY = 0;
+                PositionX = Math.random()*this.game.world.width;
+            }else if(xVelocity > 0){
+                PositionX = 0;
+                PositionY = Math.random()*this.game.world.height;
+            }else{
+                PositionX = this.game.world.width;
+                PositionY = Math.random()*this.game.world.height;
+            }
+            this.enemy = this.enemies.create(PositionX, PositionY, 'cat1');
+            this.enemy.anchor.setTo(0.5,0.5);
+            this.enemy.animations.add('walkDown', [6,7,8], 10, true);
+            this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
+            this.enemy.animations.add('Walkright', [3,4,5], 10, true);
+            this.enemy.animations.add('WalkLeft', [9,10,11], 10, true);
+            this.enemy.body.velocity.x = xVelocity;
+            this.enemy.body.velocity.y = yVelocity;
+            p++;
+            if(yVelocity>Math.abs(xVelocity)){
+                this.enemy.animations.play('WalkUp');
+            }else if(yVelocity < -Math.abs(xVelocity)){
+                this.enemy.animations.play('WalkDown');
+            }else if(xVelocity > 0){
+                this.enemy.animations.play('WalkRight');
+            }else{
+                this.enemy.animations.play('WalkLeft');
+            }
+        }
+        this.enemies.setAll('body.collideWorldBounds', true);
+        this.enemies.setAll('body.bounce.x', 1);
+        this.enemies.setAll('body.bounce.y', 1);
+    },
+
+    damage: function (player, enemy) {
+        this.score--;
+       // this.scoredown.play();
+        enemy.destroy();
+        switch (this.score) {
+            case 0:
+               // this.death.play();
+               //this.death.play();
+                this.quitGame(0);
+                this.state.start('Fail');
+                break;
+            default:
+                //player.loadTexture('char1', 0, false);
+                if(this.score< 0){
+                    //this.death.play();
+                    this.quitGame(0);
+                } else {
+                    this.score = 1;
+                }
+        }
+        player.resetFrame();
+        player.anchor.setTo(0.5, 0.5);
+        // this.scoredown.play();
+    },
+
+    quitGame: function (val) {
+
+        //  Here you should destroy anything you no longer need.
+        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
+        /*this.food.destroy();
+        this.char.destroy();
+        this.objects = [];
+        this.score = 1;*/
+        if (val == 0) {
+            this.state.start('Fail');
+        } else if (val == 1) {
+            this.state.start('Win');
+        } else {
+            this.state.start('TitleScreen')
+        }
     }
+
 };
