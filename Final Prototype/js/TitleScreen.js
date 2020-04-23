@@ -1,6 +1,6 @@
 "use strict";
 
-BasicGame.Game = function (game) {
+BasicGame.TitleScreen = function (game) {
 
     //  When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
     /*
