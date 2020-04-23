@@ -46,6 +46,7 @@ BasicGame.TitleScreen = function (game) {
     this.vines = null;
     this.lock = null;
     this.ground = null;
+    this.background = null;
     //this.text;
 
     
@@ -55,6 +56,7 @@ BasicGame.TitleScreen.prototype = {
 
     create: function () {
         this.game.physics.arcade.gravity.y = 2600;
+        this.background = this.game.add.sprite(0,0, 'background');
 
         this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY-300, 'char' );
       /*  this.char.frame = 6;

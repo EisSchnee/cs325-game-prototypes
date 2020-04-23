@@ -45,7 +45,7 @@ BasicGame.World1.prototype = {
         this.layer1.resizeWorld();
         
         // Create a sprite at the center of the screen using the 'logo' image.
-        this.char = this.game.add.sprite( game.world.width + 100, game.world.centerY-200, 'char' );
+        this.char = this.game.add.sprite( this.game.world.width + 100, this.game.world.centerY-200, 'char' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         this.game.physics.enable( this.char, Phaser.Physics.ARCADE );
@@ -68,7 +68,7 @@ BasicGame.World1.prototype = {
             this.ground.add(groundBlock);
         }
 
-        game.camera.follow(char);
+        this.game.camera.follow(char);
         
 
         this.game.input.keyboard.addKeyCapture([
