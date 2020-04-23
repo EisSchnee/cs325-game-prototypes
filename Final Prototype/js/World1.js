@@ -15,10 +15,10 @@ BasicGame.World1 = function (game) {
     
     "use strict";
     
-    var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { create: create, update: update } );
+    //var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { create: create, update: update } );
     this.char = null;
     this.SPEED = 150;
-
+    this.ground;
     var map;
     var layer1;
     var bouncy;
@@ -26,7 +26,7 @@ BasicGame.World1 = function (game) {
 
 BasicGame.World2.prototype = {
 
-    function create() {
+    create: function() {
 
         game.physics.arcade.gravity.y = 2600;
         // Create the map. 
@@ -47,15 +47,15 @@ BasicGame.World2.prototype = {
         layer1.resizeWorld();
         
         // Create a sprite at the center of the screen using the 'logo' image.
-        char = game.add.sprite( game.world.X + 100, game.world.centerY-200, 'char' );
+        this.char = game.add.sprite( game.world.X + 100, game.world.centerY-200, 'char' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
-        char.anchor.setTo( 0.5, 0.5 );
+        this.char.anchor.setTo( 0.5, 0.5 );
         
         // Turn on the arcade physics engine for this sprite.
         game.physics.enable( bouncy, Phaser.Physics.ARCADE );
         // Make it bounce off of the world bounds.
-        char.body.collideWorldBounds = true;
+        this.char.body.collideWorldBounds = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
@@ -79,30 +79,9 @@ BasicGame.World2.prototype = {
             Phaser.Keyboard.UP,
             Phaser.Keyboard.DOWN
         ]);
-
-        this.game.physics.arcade.collide(this.char, this.ground);
-
-        if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-            // If the LEFT key is down, move left
-            this.char.body.velocity.x = -this.SPEED;
-           // this.char.animations.play('walkLeft');
-        } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-            // If the RIGHT key is down, move right
-            this.char.body.velocity.x = this.SPEED;
-           // this.char.animations.play('walkRight');
-        }else{
-            this.char.body.velocity.x = 0;
-        }
-
-        var onTheGround = this.player.body.touching.down;
-
-        if (onTheGround && this.upInputIsActive()) {
-            // Jump when the player is touching the ground and the up arrow is pressed
-            this.player.body.velocity.y = this.SPEED;
-        }
         
 
-    }
+    },
     
     function update() {
         // Accelerate the 'logo' sprite towards the cursor,
@@ -110,6 +89,26 @@ BasicGame.World2.prototype = {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
+       // bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
+       this.game.physics.arcade.collide(this.char, this.ground);
+
+       if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+           // If the LEFT key is down, move left
+           this.char.body.velocity.x = -this.SPEED;
+          // this.char.animations.play('walkLeft');
+       } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+           // If the RIGHT key is down, move right
+           this.char.body.velocity.x = this.SPEED;
+          // this.char.animations.play('walkRight');
+       }else{
+           this.char.body.velocity.x = 0;
+       }
+
+       var onTheGround = this.player.body.touching.down;
+
+       if (onTheGround && this.upInputIsActive()) {
+           // Jump when the player is touching the ground and the up arrow is pressed
+           this.player.body.velocity.y = this.SPEED;
+       }
     }
 };
