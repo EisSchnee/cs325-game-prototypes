@@ -83,6 +83,9 @@ BasicGame.World1.prototype = {
             Phaser.Keyboard.DOWN
         ]);
         
+        this.enemies = this.game.add.group();
+        this.enemies.enableBody = true;
+        this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
         this.createEnemies();
 
     },
