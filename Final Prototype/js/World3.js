@@ -125,14 +125,14 @@ BasicGame.World3.prototype = {
                 this.player_health_text.setText('health: ' + this.health);
             }
             this.heavy = false;
-        }else if(this.nextmove != null && this.nextmove > .3 && !this.heavy){
+        }else if(this.nextmove != null && this.nextmove > .3){
             this.heavy = true;
         }else if(this.nextmove != null){
             if(this.heavy){
-                this.enemy_health += 30;
+                this.enemy_health += 20;
                 this.enemy_health_text.setText('health: ' + this.enemy_health);
             }else{
-                this.enemy_health += 8;
+                this.enemy_health += 5;
                 this.enemy_health_text.setText('health: ' + this.enemy_health);
             }
             this.heavy = false;

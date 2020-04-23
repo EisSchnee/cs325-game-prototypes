@@ -101,6 +101,7 @@ BasicGame.World1.prototype = {
        // bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
        this.game.physics.arcade.collide(this.char, this.ground);
        this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
+       this.physics.arcade.overlap(this.char, this.food, this.point, null, this);
        
        if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
            // If the LEFT key is down, move left
