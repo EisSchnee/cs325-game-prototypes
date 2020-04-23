@@ -62,9 +62,9 @@ BasicGame.World3.prototype = {
 
    attack: function () {
         if(this.prepared){
-            enemy_health -= 15;
+            this.enemy_health -= 15;
         }else{
-            enemy_health -= 10;
+            this.enemy_health -= 10;
         }
 
         this.prepared = false;
@@ -103,7 +103,7 @@ BasicGame.World3.prototype = {
         }else if(this.nextmove != null){
 
         }
-        this.nextmove = math.random()*3;
+        this.nextmove = Math.random()*3;
    },
 
    quitGame: function (val) {

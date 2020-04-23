@@ -49,6 +49,11 @@ BasicGame.Boot.prototype = {
         this.load.image('world2', 'assets/world2_portal.png');
         this.load.image('world3', 'assets/world3_portal.png');
         this.load.image('ground', 'assets/groundblock.png');
+         
+        this.load.image('attack_button', 'assets/attack_button.png');
+        this.load.image('block_button', 'assets/block_button.png');
+        this.load.image('prepare_button', 'assets/prepare_button.png');
+        this.load.image('boss', 'assets/boss.png');
         
         //https://opengameart.org/content/cats-rework
 		this.load.spritesheet('cat1', 'assets/cat_orange.png', 64, 96);
