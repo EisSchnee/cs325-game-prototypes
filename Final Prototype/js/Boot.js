@@ -65,7 +65,7 @@ BasicGame.Boot.prototype = {
 
         //this.load.tilemap('map', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
         // alternatively, from .csv file
-        game.load.tilemap('map', 'assets/tilemap_example.csv', null, Phaser.Tilemap.CSV);
+        this.game.load.tilemap('map', 'assets/tilemap_example.csv', null, Phaser.Tilemap.CSV);
         
         //load tiles for map
         this.load.image('tiles', 'assets/tiles.png');
