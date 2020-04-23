@@ -40,6 +40,10 @@ BasicGame.World3 = function (game) {
     this.defending = false;
     this.heavy = false;
 
+    this.enemy_move_text = null;
+    this.enemy_health_text = null;
+    this.player_health_text = null;
+
     this.nextmove = null;
 };
 
@@ -52,6 +56,14 @@ BasicGame.World3.prototype = {
     this.defend_button = this.add.button( this.game.world.centerX - 50, this.game.world.height -100, 'block_button', this.defend, this, 'over', 'out', 'down');
     this.prepare_button = this.add.button(this.game.world.width - 263, this.game.world.height -100, 'prepare_button', this.prepare, this);
 
+    var style1 = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+    var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
+        this.enemy_move_text = this.game.add.text( this.game.world.centerX + 200, 200, 'Enemy is thinking...', style1 );
+        this.enemy_health_text = this.game.add.text( this.game.world.centerX + 200, 200, 'Enemy health: 100', style1 );
+        this.player_health_text = this.game.add.text(200, 200, 'health: 100', style2)
+        this.enemy_move_text.anchor.setTo( 0.5, 0.0 );
+        this.enemy_health_text.anchor.setTo( 0.5, 0.0 );
+        this.player_health_text.anchor.setTo( 0.5, 0.0 );
    },
 
 
@@ -64,8 +76,10 @@ BasicGame.World3.prototype = {
    attack: function () {
         if(this.prepared){
             this.enemy_health -= 15;
+            this.enemy_health_text.setText('health: ' + this.enemy_health);
         }else{
             this.enemy_health -= 10;
+            this.enemy_health_text.setText('health: ' + this.enemy_health);
         }
         this.prepared = false;
         if(this.enemy_health <= 0){
@@ -92,22 +106,46 @@ BasicGame.World3.prototype = {
             if(this.defending && !this.prepared){
                 if(this.heavy){
                     this.health -= 25;
+                    this.player_health_text.setText('health: ' + this.health);
                 }else{
-                    this.health -= 10;
+                    this.health -= 5;
+                    this.player_health_text.setText('health: ' + this.health);
                 }
             }else if( !this.defending){
                 if(this.heavy){
                     this.health -= 65;
+                    this.player_health_text.setText('health: ' + this.health);
                 }else{
+
                     this.health-= 30;
+                    this.player_health_text.setText('health: ' + this.health);
                 }
+            }else if(this.heavy){
+                this.health -= 5;
+                this.player_health_text.setText('health: ' + this.health);
             }
         }else if(this.nextmove != null && this.nextmove > .3 && !this.heavy){
             this.heavy = true;
         }else if(this.nextmove != null){
-
+            if(this.heavy){
+                this.enemy_health += 30;
+                this.enemy_health_text.setText('health: ' + this.enemy_health);
+            else{
+                this.enemy_health += 8;
+                this.enemy_health_text.setText('health: ' + this.enemy_health);
+            }
         }
         this.nextmove = Math.random()*3;
+        if(this.nextmove > 1){
+            this.enemy_move_text.setText('Enemy is attacking!');
+        }else if(this.nextmove > .3 && !this.heavy){
+            this.enemy_move_text.setText('Enemy is preparing his next move!');
+        }else if(this.nextmove != null){
+            this.enemy_move_text.setText('Enemy is healing!');
+        }
+        if( this.health){
+            this.quitGame(0);
+        }
    },
 
    quitGame: function (val) {
