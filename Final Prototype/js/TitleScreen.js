@@ -68,7 +68,6 @@ BasicGame.TitleScreen.prototype = {
         this.char.anchor.setTo(0.5, 0.5);
 
         this.char.body.collideWorldBounds = true;
-
         this.game.input.keyboard.addKeyCapture([
             Phaser.Keyboard.LEFT,
             Phaser.Keyboard.RIGHT,
@@ -76,10 +75,13 @@ BasicGame.TitleScreen.prototype = {
             Phaser.Keyboard.DOWN
         ]);
 
+        this.healthbar = this.game.add.sprite(0, 0, 'healthBar');
+        this.items = this.game.add.sprite(this.game.world.width -200, 0, 'items');
+
         this.portal1 = this.game.add.sprite(30, this.game.world.centerY + 50, 'world1');
         this.portal2 = this.game.add.sprite(this.game.world.centerX - 50, this.game.world.centerY + 50, 'world2');
         this.portal3 = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'world3');
-        this.loadbar = this.game.add.sprite(this.game.world.centerX - 150, this.game.world.centerY - 75, 'loadbar');
+        this.loadbar = this.game.add.sprite(this.game.world.centerX - 100, this.game.world.centerY - 75, 'loadbar');
         this.game.physics.enable(this.loadbar, Phaser.Physics.ARCADE);
         this.loadbar.body.immovable = true;
         this.loadbar.body.allowGravity = false;

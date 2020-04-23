@@ -19,9 +19,8 @@ BasicGame.World1 = function (game) {
     this.char = null;
     this.SPEED = 150;
     this.ground;
-    var map;
-    var layer1;
-    var bouncy;
+    this.map = null;
+    this.layer1 = null;
 };
 
 BasicGame.World1.prototype = {
@@ -29,21 +28,21 @@ BasicGame.World1.prototype = {
     create: function() {
         this.game.physics.arcade.gravity.y = 2600;
         // Create the map. 
-        map = this.game.add.tilemap('map');
+        this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
         //map = game.add.tilemap('map', 32, 32);
         
         //add tiles
-        map.addTilesetImage('tiles');
+        this.map.addTilesetImage('tiles');
         
         // Create a layer from the map
         //using the layer name given in the .json file
-        layer1 = map.createLayer('Tile Layer 1');
+        this.layer1 = map.createLayer('Tile Layer 1');
         //for csv files
         //layer1 = map.createLayer(0);
         
         //  Resize the world
-        layer1.resizeWorld();
+        this.layer1.resizeWorld();
         
         // Create a sprite at the center of the screen using the 'logo' image.
         this.char = this.game.add.sprite( game.world.X + 100, game.world.centerY-200, 'char' );
