@@ -107,7 +107,7 @@ BasicGame.World1.prototype = {
 
        if (onTheGround && this.input.keyboarde.isDown(Phaser.Keyboard.UP)) {
            // Jump when the player is touching the ground and the up arrow is pressed
-           this.player.body.velocity.y = this.SPEED;
+           this.player.body.velocity.y = -800;
        }
     }
 };

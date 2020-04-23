@@ -56,7 +56,7 @@ BasicGame.TitleScreen.prototype = {
     create: function () {
         this.game.physics.arcade.gravity.y = 2600;
 
-        this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY+100, 'char' );
+        this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY-300, 'char' );
       /*  this.char.frame = 6;
         this.char.animations.add('walkRight', [3, 4, 5], 10, true);
         this.char.animations.add('walkDown', [6,7,8], 10, true);
@@ -76,9 +76,9 @@ BasicGame.TitleScreen.prototype = {
             Phaser.Keyboard.DOWN
         ]);
 
-        this.portal1 = this.game.add.sprite(100, this.game.world.centerY - 150, 'world1');
-        this.portal2 = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY - 150, 'world2');
-        this.portal3 = this.game.add.sprite(this.game.world.X - 100, this.game.world.centerY - 150, 'world3');
+        this.portal1 = this.game.add.sprite(50, this.game.world.centerY + 150, 'world1');
+        this.portal2 = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY + 150, 'world2');
+        this.portal3 = this.game.add.sprite(this.game.world.width - 50, this.game.world.centerY + 150, 'world3');
         this.loadbar = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loadbar');
         this.ctr = 0;
         /*var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
@@ -124,7 +124,7 @@ BasicGame.TitleScreen.prototype = {
 
         if (onTheGround && this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             // Jump when the player is touching the ground and the up arrow is pressed
-            this.char.body.velocity.y = this.SPEED;
+            this.char.body.velocity.y = -800;
         }
         /*} if (this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             // If the UP key is down, move up
