@@ -50,12 +50,12 @@ BasicGame.Boot.prototype = {
         this.load.image('world3', 'assets/world3_portal.png');
         this.load.image('ground', 'assets/groundblock.png');
         
-        game.load.tilemap('map', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('map', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
         // alternatively, from .csv file
         //game.load.tilemap('map', 'assets/tilemap_example.csv', null, Phaser.Tilemap.CSV);
         
         //load tiles for map
-        game.load.image('tiles', 'assets/tiles.png');
+        this.load.image('tiles', 'assets/tiles.png');
     },
 
     create: function () {
