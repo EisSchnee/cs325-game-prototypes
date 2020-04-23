@@ -36,7 +36,7 @@ BasicGame.World1.prototype = {
         // Create the map. 
         //this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
-        this.map = this.game.add.tilemap('map', 20, 60);
+        this.map = this.game.add.tilemap('map', 32, 64);
         
         //add tiles
         this.map.addTilesetImage('tiles');
@@ -156,7 +156,7 @@ BasicGame.World1.prototype = {
         var food = this.game.add.sprite((Math.random()*this.game.world.width), 50, 'match');
         this.game.physics.enable(food, Phaser.Physics.ARCADE);
         food.anchor.setTo(0.5, 0.5);
-        food.body.collideWorldBounds = false;
+        food.body.collideWorldBounds = true;
         this.food = food;
     },
 

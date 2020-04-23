@@ -135,6 +135,7 @@ BasicGame.World3.prototype = {
                 this.enemy_health += 8;
                 this.enemy_health_text.setText('health: ' + this.enemy_health);
             }
+            this.heavy = false;
         }
         this.nextmove = Math.random()*3;
         if(this.nextmove > 1){
