@@ -69,18 +69,18 @@ BasicGame.Game.prototype = {
 
         this.prepared = false;
         Enemyturn(0);
-   }
+   };
 
    defend: function () { 
         this.defending = true;
         Enemyturn(1);
-   }
+   };
 
    prepare: function () {
         this.prepared - true;
         Enemyturn(2);
 
-   }
+   };
 
    Enemyturn: function (value) {
 
@@ -104,7 +104,7 @@ BasicGame.Game.prototype = {
 
         }
         nextmove = math.random()*3;
-   }
+   };
 
    quitGame: function (val) {
 
