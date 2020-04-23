@@ -72,7 +72,7 @@ BasicGame.Boot.prototype = {
 
         this.load.atlas('continue', 'assets/pause-continue.png', 'assets/continue.json');
         this.load.image('continue', 'assets/pause-continue.png');
-        this.load.image('failBackground', 'assets/')
+        this.load.image('failBackground', 'assets/fail-background.png');
         this.load.image('WinScreen', 'assets/WinScreen.png', this.game.width, this.game.height);
     },
 
