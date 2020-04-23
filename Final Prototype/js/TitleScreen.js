@@ -120,11 +120,11 @@ BasicGame.TitleScreen.prototype = {
             this.char.body.velocity.x = 0;
         }
 
-        var onTheGround = this.player.body.touching.down;
+        var onTheGround = this.char.body.touching.down;
 
         if (onTheGround && this.upInputIsActive()) {
             // Jump when the player is touching the ground and the up arrow is pressed
-            this.player.body.velocity.y = this.SPEED;
+            this.char.body.velocity.y = this.SPEED;
         }
         /*} if (this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             // If the UP key is down, move up
