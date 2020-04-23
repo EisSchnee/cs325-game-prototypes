@@ -24,7 +24,7 @@ BasicGame.World1 = function (game) {
     var bouncy;
 };
 
-BasicGame.World2.prototype = {
+BasicGame.World1.prototype = {
 
     create: function() {
         this.game.physics.enable( bouncy, Phaser.Physics.ARCADE );
