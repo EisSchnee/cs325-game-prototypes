@@ -21,6 +21,7 @@ BasicGame.Fail.prototype = {
 		//this.add.sprite(0, 0, 'titlePage');
         this.add.sprite(0,0, 'failBackground');
 		this.playButton = this.add.button( 303, 400, 'continue', this.startGame, this);
+		
 	},
 
 	update: function () {

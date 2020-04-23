@@ -28,9 +28,9 @@ BasicGame.World1.prototype = {
     create: function() {
         this.game.physics.arcade.gravity.y = 2600;
         // Create the map. 
-        this.map = this.game.add.tilemap('map');
+        //this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
-        //map = game.add.tilemap('map', 32, 32);
+        map = game.add.tilemap('map', 20, 60);
         
         //add tiles
         this.map.addTilesetImage('tiles');

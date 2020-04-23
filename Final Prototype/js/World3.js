@@ -115,7 +115,7 @@ BasicGame.World3.prototype = {
        //  Here you should destroy anything you no longer need.
        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
-       this.scoredown.play();
+       //this.scoredown.play();
        if (val == 0) {
            this.state.start('Fail');
        } else if (val == 1) {

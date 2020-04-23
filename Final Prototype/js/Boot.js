@@ -55,6 +55,7 @@ BasicGame.Boot.prototype = {
         this.load.image('block_button', 'assets/block_button.png');
         this.load.image('prepare_button', 'assets/prepare_button.png');
         this.load.image('boss', 'assets/boss.png');
+        this.load.image('large_char', 'assets/large_char.png');
 
         //https://opengameart.org/content/cats-rework
 		this.load.spritesheet('cat1', 'assets/cat_orange.png', 64, 96);
@@ -62,14 +63,16 @@ BasicGame.Boot.prototype = {
 		this.load.spritesheet('cat3', 'assets/cat_brown.png', 64, 96);
 		this.load.spritesheet('cat4', 'assets/cat_black.png', 64, 96);
 
-        this.load.tilemap('map', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
+        //this.load.tilemap('map', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
         // alternatively, from .csv file
-        //game.load.tilemap('map', 'assets/tilemap_example.csv', null, Phaser.Tilemap.CSV);
+        game.load.tilemap('map', 'assets/tilemap_example.csv', null, Phaser.Tilemap.CSV);
         
         //load tiles for map
         this.load.image('tiles', 'assets/tiles.png');
 
         this.load.atlas('continue', 'assets/pause-continue.png', 'assets/continue.json');
+        this.load.image('continue', 'assets/pause-continue.png');
+        this.load.image('failBackground', 'assets/')
         this.load.image('WinScreen', 'assets/WinScreen.png', this.game.width, this.game.height);
     },
 
