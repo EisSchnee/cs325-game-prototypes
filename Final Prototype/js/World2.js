@@ -186,21 +186,21 @@ BasicGame.World2.prototype = {
             }
             this.enemy = this.enemies.create(PositionX, PositionY, 'cat1');
             this.enemy.anchor.setTo(0.5,0.5);
-            //this.enemy.animations.add('walkDown', [6,7,8], 10, true);
-            //this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
-            //this.enemy.animations.add('Walkright', [3,4,5], 10, true);
-            //this.enemy.animations.add('WalkLeft', [9,10,11], 10, true);
+            this.enemy.animations.add('walkDown', [6,7,8], 10, true);
+            this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
+            this.enemy.animations.add('Walkright', [3,4,5], 10, true);
+            this.enemy.animations.add('WalkLeft', [9,10,11], 10, true);
             this.enemy.body.velocity.x = xVelocity;
             this.enemy.body.velocity.y = yVelocity;
             p++;
             if(yVelocity>Math.abs(xVelocity)){
-                //this.enemy.animations.play('WalkUp');
+                this.enemy.animations.play('WalkUp');
             }else if(yVelocity < -Math.abs(xVelocity)){
-               // this.enemy.animations.play('WalkDown');
+                this.enemy.animations.play('WalkDown');
             }else if(xVelocity > 0){
-               // this.enemy.animations.play('WalkRight');
+                this.enemy.animations.play('WalkRight');
             }else{
-               // this.enemy.animations.play('WalkLeft');
+                this.enemy.animations.play('WalkLeft');
             }
         }
         this.enemies.setAll('body.collideWorldBounds', true);
