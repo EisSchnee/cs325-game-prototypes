@@ -46,11 +46,12 @@ BasicGame.World3 = function (game) {
 BasicGame.World3.prototype = {
 
    create: function () {
-    this.attack_button = this.add.button( 100, this.game.world.height -100, 'attack_button', this.attack, this, 'over', 'out', 'down');
-    this.defend_button = this.add.button( this.game.world.centerX, this.game.world.height -100, 'defend_button', this.defend, this, 'over', 'out', 'down');
-    this.prepare_button = this.add.button(this.game.world.width - 100, this.game.world.height -100, 'prepare_button', this.prepare, this);
     this.char = this.game.add.sprite( 100, this.game.world.centerY+100, 'char' );
-    this.boss = this.game.add.sprite( this.game.world.width-100, this.game.world.centerY+100, 'boss' );
+    this.boss = this.game.add.sprite( this.game.world.width-300, this.game.world.centerY-150, 'boss' );
+    this.attack_button = this.add.button( 100, this.game.world.height -100, 'attack_button', this.attack, this, 'over', 'out', 'down');
+    this.defend_button = this.add.button( this.game.world.centerX, this.game.world.height -100, 'block_button', this.defend, this, 'over', 'out', 'down');
+    this.prepare_button = this.add.button(this.game.world.width - 263, this.game.world.height -100, 'prepare_button', this.prepare, this);
+
    },
 
 

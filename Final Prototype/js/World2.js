@@ -137,7 +137,7 @@ BasicGame.World2.prototype = {
 
     damage: function (player, enemy) {
         this.score--;
-        this.scoredown.play();
+       // this.scoredown.play();
         enemy.destroy();
         switch (this.score) {
             case 0:
@@ -217,7 +217,7 @@ BasicGame.World2.prototype = {
 
     point: function () {
         this.score++;
-        this.scoreup.play();
+        //this.scoreup.play();
         var ctr = 0;
         this.createEnemies();
         this.food.destroy();
@@ -240,7 +240,7 @@ BasicGame.World2.prototype = {
         }
         this.char.resetFrame();
         this.char.anchor.setTo(0.5, 0.5);
-        if(score == 10){
+        if(score == 5){
             quitGame(1);
         }
     },
@@ -258,7 +258,7 @@ BasicGame.World2.prototype = {
         } else if (val == 1) {
             this.state.start('Win');
         } else {
-            this.state.start('MainMenu')
+            this.state.start('TitleScreen')
         }
     }
 
