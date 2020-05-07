@@ -167,7 +167,7 @@ BasicGame.World1.prototype = {
                 platform.body.allowGravity = false;
                 this.platforms.add(platform);
             }
-            platnum --;
+            platnum -= 2;
         }
         this.match = this.game.add.sprite(this.game.width / 2, currentheight - 100, 'match');
         this.game.physics.enable(this.match, Phaser.Physics.ARCADE);
