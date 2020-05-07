@@ -303,7 +303,7 @@ BasicGame.TitleScreen.prototype = {
 
        //this.SPEED.destroy();
 
-        this.objects.destroy();
+        //this.objects.destroy();
 
         //this.score.destroy();
 

@@ -76,14 +76,14 @@ BasicGame.World1.prototype = {
         this.char.body.collideWorldBounds = true;
         
         this.ground = this.game.add.group();
-        for(var x = 0; x < this.game.width; x += 32) {
+       /* for(var x = 0; x < this.game.width; x += 32) {
          // Add the ground blocks, enable physics on each, make them immovable
             var groundBlock = this.game.add.sprite(x, this.game.height - 32, 'ground');
             this.game.physics.enable(groundBlock, Phaser.Physics.ARCADE);
             groundBlock.body.immovable = true;
             groundBlock.body.allowGravity = false;
             this.ground.add(groundBlock);
-        }
+        }*/
         this.player_health_text = this.game.add.text(200, 200, 'health: 100', style2);
         this.game.camera.follow(this.char);
         
@@ -112,6 +112,8 @@ BasicGame.World1.prototype = {
     
     update: function() {
         if(this.active){
+            this.game.physics.arcade.collide(this.match, this.platforms);
+            this.game.physics.arcade.collide(this.sword, this.platforms);
             this.game.physics.arcade.collide(this.char, this.ground);
             this.game.physics.arcade.collide(this.char, this.platforms);
             this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
