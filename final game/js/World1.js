@@ -138,11 +138,11 @@ BasicGame.World1.prototype = {
                 this.char.body.velocity.y = -400;
             }
 
-            if(active){
+            if(this.active){
                 this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
-            }if(active){    
+            }if(this.active){    
                 this.physics.arcade.overlap(this.char, this.match, this.getMatch, null, this);
-            }if(active){    
+            }if(this.active){    
                 this.physics.arcade.overlap(this.char, this.sword, this.getSword, null, this);
             }
     },
