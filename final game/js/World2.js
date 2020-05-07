@@ -58,7 +58,7 @@ BasicGame.World2 = function (game) {
 BasicGame.World2.prototype = {
 
     create: function () {
-        this.map = this.game.add.tilemap('map');
+        this.map = this.game.add.tilemap('map2');
         // for csv files specify the tile size.
        // this.map = this.game.add.tilemap('map', 32, 64);
         
@@ -197,7 +197,7 @@ BasicGame.World2.prototype = {
     },
 
     damage: function (player, enemy) {
-        this.health -= 20;
+        this.health -= 35;
        // this.scoredown.play();
         enemy.destroy();
         this.player_health_text.setText('health: ' + this.health);

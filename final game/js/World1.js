@@ -42,7 +42,7 @@ BasicGame.World1.prototype = {
         this.game.physics.arcade.gravity.y = 400;
         // Create the map. 
         var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
-        this.map = this.game.add.tilemap('map');
+        this.map = this.game.add.tilemap('map1');
         // for csv files specify the tile size.
        // this.map = this.game.add.tilemap('map', 32, 64);
         
@@ -206,7 +206,7 @@ BasicGame.World1.prototype = {
     },
 
     damage: function (player, enemy) {
-        this.health = this.health - 10;
+        this.health = this.health - 25;
        // this.scoredown.play();
         enemy.destroy();
         this.player_health_text.setText('health: ' + this.health);
