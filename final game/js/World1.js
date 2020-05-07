@@ -47,7 +47,7 @@ BasicGame.World1.prototype = {
        // this.map = this.game.add.tilemap('map', 32, 64);
         
         //add tiles
-        this.map.addTilesetImage('tiles');
+        this.map.addTilesetImage('tiles1');
         
         // Create a layer from the map
         //using the layer name given in the .json file

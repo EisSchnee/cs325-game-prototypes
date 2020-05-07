@@ -48,7 +48,7 @@ BasicGame.World2 = function (game) {
     this.health = 100;
     this.music = new Audio('assets/335571__magntron__gamemusic.mp3');
     this.hit = new Audio('assets/404751__owlstorm__retro-video-game-sfx-computation.wav');
-    this.death = new Audio('assets/414209_jacksonacademyashmore_death.wav')
+    this.death = new Audio('assets/414209_jacksonacademyashmore_death.wav');
     this.collect = new Audio('assets/341695__projectsu012__coins-1.wav');
 
     //this.text;
@@ -63,7 +63,7 @@ BasicGame.World2.prototype = {
        // this.map = this.game.add.tilemap('map', 32, 64);
         
         //add tiles
-        this.map.addTilesetImage('tiles');
+        this.map.addTilesetImage('tiles2');
         
         // Create a layer from the map
         //using the layer name given in the .json file
