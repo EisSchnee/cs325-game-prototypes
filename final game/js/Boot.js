@@ -92,7 +92,7 @@ BasicGame.Boot.prototype = {
         this.load.audio('coin', ['assets/341695__projectsu012__coins-1.wav']);
 
         //https://freesound.org/people/OwlStorm/sounds/404751/
-        this.this.load.audio('hit', ['assets/404751__owlstorm__retro-video-game-sfx-computation.wav']);
+        this.load.audio('hit', ['assets/404751__owlstorm__retro-video-game-sfx-computation.wav']);
     },
 
     create: function () {
