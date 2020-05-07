@@ -59,6 +59,9 @@ BasicGame.TitleScreen = function (game) {
     this.health = 100;
     this.credits = null;
     this.music = new Audio('assets/335571__magntron__gamemusic.mp3');
+    this.hit = new Audio('assets/404751__owlstorm__retro-video-game-sfx-computation.wav');
+    this.death = new Audio('assets/414209_jacksonacademyashmore_death.wav');
+    this.collect = new Audio('assets/341695__projectsu012__coins-1.wav');
 };
 
 BasicGame.TitleScreen.prototype = {
