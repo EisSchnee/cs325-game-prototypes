@@ -69,6 +69,7 @@ BasicGame.TitleScreen = function (game) {
 BasicGame.TitleScreen.prototype = {
 
     create: function () {
+        this.active = true;
         this.game.camera.reset();
         this.game.physics.arcade.gravity.y = 2600;
         this.background = this.game.add.sprite(0,0, 'background');
@@ -220,23 +221,6 @@ BasicGame.TitleScreen.prototype = {
 
 
     update: function () {
-       if(this.active){
-       
-            if(this.portalActive[0]){
-                this.physics.arcade.overlap(this.char, this.portal1, this.enterWorld1, null, this);
-            }
-            if(this.portalActive[1]){
-                this.physics.arcade.overlap(this.char, this.portal2, this.enterWorld2, null, this);
-            }
-            if(this.portalActive[2]){
-                this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
-            } 
-            if(this.portalActive[3]){
-                this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
-            }  
-            this.game.physics.arcade.collide(this.char, this.ground);
-            this.game.physics.arcade.collide(this.char, this.loadbar);
-
             if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                 // If the LEFT key is down, move left
                 this.char.body.velocity.x = -this.SPEED;
@@ -278,7 +262,21 @@ BasicGame.TitleScreen.prototype = {
 
 
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        }    
+            if(this.portalActive[0]){
+                this.game.physics.arcade.collide(this.char, this.ground);
+                this.game.physics.arcade.collide(this.char, this.loadbar);
+                this.physics.arcade.overlap(this.char, this.portal1, this.enterWorld1, null, this);
+            }
+            if(this.portalActive[1]){
+                this.physics.arcade.overlap(this.char, this.portal2, this.enterWorld2, null, this);
+            }
+            if(this.portalActive[2]){
+                this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
+            } 
+            if(this.portalActive[3]){
+                this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
+            }  
+    
     },
 
     enterWorld1: function () {
