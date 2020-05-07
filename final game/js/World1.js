@@ -44,6 +44,7 @@ BasicGame.World1 = function (game) {
 BasicGame.World1.prototype = {
 
     create: function() {
+        this.active = true;
         this.game.physics.arcade.gravity.y = 400;
         // Create the map. 
         var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
@@ -111,16 +112,12 @@ BasicGame.World1.prototype = {
     },
     
     update: function() {
-        if(this.active){
+
+            //TODO check collision of  
             this.game.physics.arcade.collide(this.match, this.platforms);
             this.game.physics.arcade.collide(this.sword, this.platforms);
             this.game.physics.arcade.collide(this.char, this.ground);
             this.game.physics.arcade.collide(this.char, this.platforms);
-            this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
-            this.physics.arcade.overlap(this.char, this.match, this.getMatch, null, this);
-            this.physics.arcade.overlap(this.char, this.sword, this.getSword, null, this);
-            //TODO check collision of  
-
             if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                 // If the LEFT key is down, move left
                     this.char.body.velocity.x = -this.SPEED;
@@ -140,7 +137,14 @@ BasicGame.World1.prototype = {
                 // Jump when the player is touching the ground and the up arrow is pressed
                 this.char.body.velocity.y = -400;
             }
-        }
+
+            if(active){
+                this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
+            }if(active){    
+                this.physics.arcade.overlap(this.char, this.match, this.getMatch, null, this);
+            }if(active){    
+                this.physics.arcade.overlap(this.char, this.sword, this.getSword, null, this);
+            }
     },
     createPlatforms: function() {
         var platheight = 200;

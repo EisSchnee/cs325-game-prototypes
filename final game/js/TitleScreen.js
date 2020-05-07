@@ -221,6 +221,8 @@ BasicGame.TitleScreen.prototype = {
 
 
     update: function () {
+        this.game.physics.arcade.collide(this.char, this.ground);
+        this.game.physics.arcade.collide(this.char, this.loadbar);
             if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                 // If the LEFT key is down, move left
                 this.char.body.velocity.x = -this.SPEED;
@@ -259,21 +261,17 @@ BasicGame.TitleScreen.prototype = {
                     this.char.frame = 6;
                 }
             }*/
-
-
             //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-            if(this.portalActive[0]){
-                this.game.physics.arcade.collide(this.char, this.ground);
-                this.game.physics.arcade.collide(this.char, this.loadbar);
+            if(this.active){
                 this.physics.arcade.overlap(this.char, this.portal1, this.enterWorld1, null, this);
             }
-            if(this.portalActive[1]){
+            if(this.active){
                 this.physics.arcade.overlap(this.char, this.portal2, this.enterWorld2, null, this);
             }
-            if(this.portalActive[2]){
+            if(this.active){
                 this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
             } 
-            if(this.portalActive[3]){
+            if(this.active){
                 this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
             }  
     
