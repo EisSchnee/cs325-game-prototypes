@@ -69,14 +69,14 @@ BasicGame.Boot.prototype = {
         this.load.image('need_sword', 'assets/need_sword_button.png');
         this.load.image('credits', 'assets/credits.png');
 
-        this.load.tilemap('map1', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.tilemap('map2', 'assets/tilemap_example2.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('map', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
+        //this.load.tilemap('map2', 'assets/tilemap_example2.json', null, Phaser.Tilemap.TILED_JSON);
         // alternatively, from .csv file
         //this.game.load.tilemap('map', 'assets/tilemap_example.csv', null, Phaser.Tilemap.CSV);
         
         //load tiles for map
-        this.load.image('tiles1', 'assets/tiles1.png');
-        this.load.image('tiles2', 'assets/tiles2.png');
+        this.load.image('tiles', 'assets/tiles1.png');
+        //this.load.image('tiles2', 'assets/tiles2.png');
 
         this.load.atlas('continue', 'assets/pause-continue.png', 'assets/continue.json');
         this.load.image('continue', 'assets/pause-continue.png');

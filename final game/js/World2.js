@@ -58,12 +58,12 @@ BasicGame.World2 = function (game) {
 BasicGame.World2.prototype = {
 
     create: function () {
-        this.map = this.game.add.tilemap('map2');
+        this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
        // this.map = this.game.add.tilemap('map', 32, 64);
         
         //add tiles
-        this.map.addTilesetImage('tiles2');
+        this.map.addTilesetImage('tiles');
         
         // Create a layer from the map
         //using the layer name given in the .json file

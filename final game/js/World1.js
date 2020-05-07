@@ -45,12 +45,12 @@ BasicGame.World1.prototype = {
         this.game.physics.arcade.gravity.y = 400;
         // Create the map. 
         var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
-        this.map = this.game.add.tilemap('map1');
+        this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
        // this.map = this.game.add.tilemap('map', 32, 64);
         
         //add tiles
-        this.map.addTilesetImage('tiles1');
+        this.map.addTilesetImage('tiles');
         
         // Create a layer from the map
         //using the layer name given in the .json file
