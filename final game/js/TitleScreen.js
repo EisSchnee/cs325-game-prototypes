@@ -283,7 +283,7 @@ BasicGame.TitleScreen.prototype = {
             if(this.active){
                 this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
             }else{
-                this.state.ShutDown();
+                this.game.state.ShutDown();
             }
     
     },
@@ -336,17 +336,17 @@ BasicGame.TitleScreen.prototype = {
         //this.health.destroy();
         if (val == 0) {
             this.state.start('World1');
-            this.state.ShutDown();
+            this.game.state.ShutDown();
         } else if (val == 1) {
             this.state.start('World2');
-            this.state.ShutDown();
+            this.game.state.ShutDown();
         } else if(val == 2){
             this.state.start('World3');
-            this.state.ShutDown();
+            this.game.state.ShutDown();
 
         } else{
             this.state.start('Win');
-            this.state.ShutDown();
+            this.game.state.ShutDown();
         }
     }
 
