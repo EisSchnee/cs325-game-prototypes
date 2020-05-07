@@ -227,7 +227,7 @@ BasicGame.World1.prototype = {
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
         this.char.destroy();
-        this.SPEED.destroy();
+        //this.SPEED.destroy();
         this.ground.destroy();
         this.map.destroy();
         this.layer1.destroy();
