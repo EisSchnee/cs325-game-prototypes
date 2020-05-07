@@ -336,17 +336,17 @@ BasicGame.TitleScreen.prototype = {
         //this.health.destroy();
         if (val == 0) {
             this.state.start('World1');
-            this.game.state.ShutDown();
+            this.game.state.shutdown();
         } else if (val == 1) {
             this.state.start('World2');
-            this.game.state.ShutDown();
+            this.game.state.shutdown();
         } else if(val == 2){
             this.state.start('World3');
-            this.game.state.ShutDown();
+            this.game.state.shutdown();
 
         } else{
             this.state.start('Win');
-            this.game.state.ShutDown();
+            this.game.state.shutdown();
         }
     }
 

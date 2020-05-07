@@ -186,11 +186,18 @@ BasicGame.World3.prototype = {
 
         //this.nextmove.destroy();
         if (val == 0) {
-           this.state.start('Fail');
+            this.state.start('World1');
+            this.game.state.shutdown();
         } else if (val == 1) {
-           this.state.start('Win');
-        } else {
-           this.state.start('TitleScreen')
+            this.state.start('World2');
+            this.game.state.shutdown();
+        } else if(val == 2){
+            this.state.start('World3');
+            this.game.state.shutdown();
+
+        } else{
+            this.state.start('Win');
+            this.game.state.shutdown();
         }
    }
 
