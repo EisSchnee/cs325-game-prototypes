@@ -137,7 +137,7 @@ BasicGame.TitleScreen.prototype = {
             this.loadbar.frame = 0;
             this.lock = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'lock');
             this.vines = this.game.add.sprite(0, this.game.world.height -249, 'vines');
-            this.world1.loadTexture('world1_open', 0, false);
+            this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
             localStorage.setItem("progress", 1);
         }else if(progress == 1){
@@ -148,12 +148,12 @@ BasicGame.TitleScreen.prototype = {
             this.loadbar.frame = 0;
             this.lock = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'lock');
             this.vines = this.game.add.sprite(0, this.game.world.height -249, 'vines');
-            this.world1.loadTexture('world1_open', 0, false);
+            this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
 
             if(localStorage.getItem("hasMatch")){
                 this.vines.loadTexture('vines2', 0, false);
-                this.world2.loadTexture('world2_open', 0, false);
+                this.portal2.loadTexture('world2_open', 0, false);
                 this.portalActive[1] = true;
                 localStorage.setItem("progress", 2);
                 this.loadbar.frame = 1;
@@ -165,12 +165,12 @@ BasicGame.TitleScreen.prototype = {
             //check to see if lock is acquired. if so play cutscene and update progress
             this.loadbar.frame = 1;
             this.lock = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'lock');
-            this.world1.loadTexture('world1_open', 0, false);
+            this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
-            this.world2.loadTexture('world2_open', 0, false);
+            this.portal2.loadTexture('world2_open', 0, false);
             this.portalActive[1] = true;
             if(localStorage.getItem("hasKey")){
-                this.world3.loadTexture('world3_open', 0, false);
+                this.portal3.loadTexture('world3_open', 0, false);
                 this.portalActive[2] = true;
                 localStorage.setItem("progress", 3);
                 this.loadbar.frame = 2;
@@ -181,11 +181,11 @@ BasicGame.TitleScreen.prototype = {
             //start progress bar at 90%
             //check to see if shovel is acquired, if so, play cutscene and update progress
             this.loadbar.frame = 2;
-            this.world1.loadTexture('world1_open', 0, false);
+            this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
-            this.world2.loadTexture('world2_open', 0, false);
+            this.portal2.loadTexture('world2_open', 0, false);
             this.portalActive[1] = true;
-            this.world3.loadTexture('world3_open', 0, false);
+            this.portal3.loadTexture('world3_open', 0, false);
             this.portalActive[2] = true;
             if(localStorage.getItem("hasShovel")){
                 this.credits = this.game.add.sprite(this.game.world.width - 130, this.game.world.height + 100, 'credits');
@@ -198,11 +198,11 @@ BasicGame.TitleScreen.prototype = {
             //start progress at 90%
             //load dug up credits
             this.loadbar.frame = 3;
-            this.world1.loadTexture('world1_open', 0, false);
+            this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
-            this.world2.loadTexture('world2_open', 0, false);
+            this.portal2.loadTexture('world2_open', 0, false);
             this.portalActive[1] = true;
-            this.world3.loadTexture('world3_open', 0, false);
+            this.portal3.loadTexture('world3_open', 0, false);
             this.portalActive[2] = true;
             this.credits = this.game.add.sprite(this.game.world.width - 130, this.game.world.height + 100, 'credits');
             this.portalActive[3] = true;
