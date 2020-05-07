@@ -76,7 +76,7 @@ BasicGame.World2.prototype = {
         //this.layer1 = this.map.createLayer(0);
         
         //  Resize the world
-        this.layer1.resizeWorld();
+       //this.layer1.resizeWorld();
         var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
 
         this.game.physics.arcade.gravity.y = 0;
@@ -145,9 +145,6 @@ BasicGame.World2.prototype = {
 
     update: function () {
 
-        this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);// error in this.char.body
-        this.physics.arcade.overlap(this.char, this.food, this.point, null, this);
-
         //this.text.setText('Score: ' + this.score);
         if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
             // If the LEFT key is down, move left
@@ -195,9 +192,11 @@ BasicGame.World2.prototype = {
             this.char.body.velocity.x = 0;
             this.char.frame = 3;
         }
-
-
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        if(this.active){
+        this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);// error in this.char.body
+        }if(this.active){
+        this.physics.arcade.overlap(this.char, this.food, this.point, null, this);
+        }
     },
 
     damage: function (player, enemy) {

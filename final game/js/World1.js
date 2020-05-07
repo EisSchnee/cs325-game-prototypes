@@ -62,7 +62,7 @@ BasicGame.World1.prototype = {
         //this.layer1 = this.map.createLayer(0);
         
         //  Resize the world
-        this.layer1.resizeWorld();
+        //this.layer1.resizeWorld();
         
         // Create a sprite at the center of the screen using the 'logo' image.
         this.char = this.game.add.sprite( this.game.world.width + 100, this.game.world.height-100, 'char' );
