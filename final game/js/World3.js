@@ -83,10 +83,10 @@ BasicGame.World3.prototype = {
 
    attack: function () {
         if(this.prepared){
-            this.enemy_health -= 15;
+            this.enemy_health -= 25;
             this.enemy_health_text.setText('health: ' + this.enemy_health);
         }else{
-            this.enemy_health -= 10;
+            this.enemy_health -= 15;
             this.enemy_health_text.setText('health: ' + this.enemy_health);
         }
         this.prepared = false;
@@ -113,23 +113,23 @@ BasicGame.World3.prototype = {
         if(this.nextmove != null && this.nextmove > 1){
             if(this.defending && !this.prepared){
                 if(this.heavy){
-                    this.health -= 25;
+                    this.health -= 15;
                     this.player_health_text.setText('health: ' + this.health);
                 }else{
-                    this.health -= 5;
+                    this.health -= 3;
                     this.player_health_text.setText('health: ' + this.health);
                 }
             }else if( !this.defending){
                 if(this.heavy){
-                    this.health -= 65;
+                    this.health -= 45;
                     this.player_health_text.setText('health: ' + this.health);
                 }else{
 
-                    this.health-= 30;
+                    this.health-= 25;
                     this.player_health_text.setText('health: ' + this.health);
                 }
             }else if(this.heavy){
-                this.health -= 5;
+                this.health -= 3;
                 this.player_health_text.setText('health: ' + this.health);
             }
             this.heavy = false;
@@ -140,7 +140,7 @@ BasicGame.World3.prototype = {
                 this.enemy_health += 20;
                 this.enemy_health_text.setText('health: ' + this.enemy_health);
             }else{
-                this.enemy_health += 5;
+                this.enemy_health += 10;
                 this.enemy_health_text.setText('health: ' + this.enemy_health);
             }
             this.heavy = false;

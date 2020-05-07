@@ -64,7 +64,7 @@ BasicGame.Boot.prototype = {
         this.load.image('block_button', 'assets/block_button.png');
         this.load.image('prepare_button', 'assets/prepare_button.png');
         this.load.image('boss', 'assets/boss.png');
-        this.load.image('large_char', 'assets/large_char.png');
+        this.load.image('large_char', 'assets/char_large.png');
         this.load.image('need_shield', 'assets/need_shield_button.png');
         this.load.image('need_sword', 'assets/need_sword_button.png');
         this.load.image('credits', 'assets/credits.png');
@@ -74,7 +74,7 @@ BasicGame.Boot.prototype = {
         //this.game.load.tilemap('map', 'assets/tilemap_example.csv', null, Phaser.Tilemap.CSV);
         
         //load tiles for map
-        this.load.image('tiles1', 'assets/tiles2.png');
+        this.load.image('tiles1', 'assets/tiles1.png');
         this.load.image('tiles2', 'assets/tiles2.png');
 
         this.load.atlas('continue', 'assets/pause-continue.png', 'assets/continue.json');
