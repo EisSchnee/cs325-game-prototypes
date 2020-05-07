@@ -75,13 +75,13 @@ BasicGame.World2.prototype = {
         //for csv files
         //this.layer1 = this.map.createLayer(0);
         
-        //  Resize the world
-       //this.layer1.resizeWorld();
+        //Resize the world
+       this.layer1.resizeWorld();
         var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
 
         this.game.physics.arcade.gravity.y = 0;
      
-        this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'char_top' );
+        this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'top_char' );
         this.char.frame = 2;
 
         this.char.animations.add('walkHori', [10, 11, 12, 13, 14], 10, true);
@@ -204,7 +204,7 @@ BasicGame.World2.prototype = {
        // this.scoredown.play();
         enemy.destroy();
         this.player_health_text.setText('health: ' + this.health);
-        if(health <= 0){
+        if(this.health <= 0){
             this.quitGame(3);
         }
         player.resetFrame();

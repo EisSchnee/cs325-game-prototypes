@@ -184,7 +184,7 @@ BasicGame.World3.prototype = {
         this.enemy_health_text.destroy();
         this.player_health_text.destroy();
 
-        this.nextmove.destroy();
+        //this.nextmove.destroy();
         if (val == 0) {
            this.state.start('Fail');
         } else if (val == 1) {
