@@ -37,7 +37,7 @@ BasicGame.Boot.prototype = {
         //**
         //  Here we load the assets required for our Preloader state (in this case a background and a loading bar)
         this.load.spritesheet('loadbar', 'assets/loadbar.png', 184, 52);
-        this.load.spritesheet('char', 'assets/char_sprite.png', 175, 80);
+        this.load.spritesheet('char', 'assets/char_sprite.png', 80, 175);
         this.load.spritesheet('top_char', 'assets/top_char.png', 73, 75);
         this.load.spritesheet('enemy', 'assets/enemy.png', 33, 30);
         this.load.image('shield', 'assets/shield.png');
@@ -81,6 +81,18 @@ BasicGame.Boot.prototype = {
         this.load.image('continue', 'assets/pause-continue.png');
         this.load.image('failBackground', 'assets/fail-background.png');
         this.load.image('WinScreen', 'assets/WinScreen.png', this.game.width, this.game.height);
+        
+        //https://freesound.org/people/Magntron/sounds/335571/
+        this.load.audio('music', ['assets/335571_magntron_gamemusic.mp3']);
+
+        //https://freesound.org/people/jacksonacademyashmore/sounds/414209/
+        this.load.audio('death', ['assets/414209_jacksonacademyashmore_death.wav']);
+
+        //https://freesound.org/people/ProjectsU012/sounds/341695/
+        this.load.audio('coin', ['assets/341695__projectsu012__coins-1.wav']);
+
+        //https://freesound.org/people/OwlStorm/sounds/404751/
+        this. this.load.audio('hit', ['assets/404751__owlstorm__retro-video-game-sfx-computation.wav']);
     },
 
     create: function () {

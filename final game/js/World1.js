@@ -145,7 +145,7 @@ BasicGame.World1.prototype = {
                 this.sword = this.game.add.sprite(this.game.width / 4, currentheight + 100, 'sword');
                 this.game.physics.enable(this.sword, Phaser.Physics.ARCADE);
             }
-            for(i = 1; i <= platnum; i++){
+            for(var i = 1; i <= platnum; i++){
                 var platform = this.game.add.sprite((this.game.width / platnum) * i, currentheight, 'platform');
                 this.game.physics.enable(platform, Phaser.Physics.ARCADE);
                 platform.body.immovable = true;
