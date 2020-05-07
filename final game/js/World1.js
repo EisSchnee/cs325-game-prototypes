@@ -33,6 +33,7 @@ BasicGame.World1 = function (game) {
 
     this.health = 100;
     this.platforms = null;
+    this.music = new Audio('assets/335571__magntron__gamemusic.mp3');
 };
 
 BasicGame.World1.prototype = {

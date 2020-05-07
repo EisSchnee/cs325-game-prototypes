@@ -58,6 +58,7 @@ BasicGame.TitleScreen = function (game) {
 
     this.health = 100;
     this.credits = null;
+    this.music = new Audio('assets/335571__magntron__gamemusic.mp3');
 };
 
 BasicGame.TitleScreen.prototype = {
@@ -135,7 +136,7 @@ BasicGame.TitleScreen.prototype = {
             //start progress bar at 0
             //play loading cutscene up to 25%
             this.loadbar.frame = 0;
-            this.lock = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'lock');
+            this.lock = this.game.add.sprite(this.game.world.width - 100, this.game.world.centerY + 30, 'lock');
             this.vines = this.game.add.sprite(0, this.game.world.height -249, 'vines');
             this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
@@ -146,7 +147,7 @@ BasicGame.TitleScreen.prototype = {
             //start progress bar 25%
             //check to see if match is acquired. if so, play cutscene and update progress.
             this.loadbar.frame = 0;
-            this.lock = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'lock');
+            this.lock = this.game.add.sprite(this.game.world.width - 100, this.game.world.centerY+30, 'lock');
             this.vines = this.game.add.sprite(0, this.game.world.height -249, 'vines');
             this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
@@ -164,7 +165,7 @@ BasicGame.TitleScreen.prototype = {
             //start progress bar at 50% 
             //check to see if lock is acquired. if so play cutscene and update progress
             this.loadbar.frame = 1;
-            this.lock = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'lock');
+            this.lock = this.game.add.sprite(this.game.world.width - 100, this.game.world.centerY + 30, 'lock');
             this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
             this.portal2.loadTexture('world2_open', 0, false);

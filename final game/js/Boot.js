@@ -37,7 +37,7 @@ BasicGame.Boot.prototype = {
         //**
         //  Here we load the assets required for our Preloader state (in this case a background and a loading bar)
         this.load.spritesheet('loadbar', 'assets/loadbar.png', 184, 52);
-        this.load.spritesheet('char', 'assets/char_sprite.png', 80, 175);
+        this.load.spritesheet('char', 'assets/char_sprite.png', 40, 84);
         this.load.spritesheet('top_char', 'assets/top_char.png', 73, 75);
         this.load.spritesheet('enemy', 'assets/enemy.png', 33, 30);
         this.load.image('shield', 'assets/shield.png');
