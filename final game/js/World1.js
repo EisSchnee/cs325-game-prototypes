@@ -151,7 +151,7 @@ BasicGame.World1.prototype = {
                 this.sword.anchor.setTo(0.5, 0.5);
                 this.sword.body.collideWorldBounds = true;
             }
-            for(var i = 1; i <= platnum; i++){
+            for(var i = 1; i < platnum; i++){
                 var platform = this.game.add.sprite((this.game.width / platnum) * i, currentheight, 'platform');
                 this.game.physics.enable(platform, Phaser.Physics.ARCADE);
                 platform.body.immovable = true;
@@ -177,7 +177,7 @@ BasicGame.World1.prototype = {
 
     createEnemies: function () {
         var p = 0;
-        while(p < 7) {
+        while(p < 10) {
             var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
             var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
             if(Math.random()*2 > 1){
@@ -243,7 +243,7 @@ BasicGame.World1.prototype = {
         this.match.destroy();
 
         this.sword.destroy();
-        this.lock.destroy();
+        //this.lock.destroy();
 
         //this.health.destroy();
         this.platforms.destroy();

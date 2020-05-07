@@ -44,6 +44,8 @@ BasicGame.World2 = function (game) {
     this.score = 1;
 
     this.ctr = 0;
+    this.shield = null;
+    this.key = null;
 
     this.health = 100;
     this.music = new Audio('assets/335571__magntron__gamemusic.mp3');
@@ -212,7 +214,7 @@ BasicGame.World2.prototype = {
 
     createEnemies: function () {
         var p = 0;
-        while(p < 7) {
+        while(p < 20) {
             var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
             var xVelocity = Math.sqrt(((this.SPEED*this.SPEED)/2)-(yVelocity*yVelocity));
             if(Math.random()*2 > 1){
@@ -255,23 +257,25 @@ BasicGame.World2.prototype = {
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
         this.char.destroy();
 
-        this.SPEED.destroy();
+        //this.SPEED.destroy();
 
-        this.objects.destroy();
+        //this.objects.destroy();
 
-        this.food.destroy();
+        //this.food.destroy();
 
         this.enemies.destroy();
 
         this.enemy.destroy();
 
-        this.homingEnemies.destroy();
+        //this.homingEnemies.destroy();
 
-        this.score.destroy();
+        //this.score.destroy();
 
-        this.ctr.destroy();
+        //this.ctr.destroy();
 
-        this.health.destroy();
+        //this.health.destroy();
+        this.key.destroy();
+        this.shield.destroy();
 
         if (val == 0) {
             this.state.start('Fail');
