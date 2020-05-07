@@ -191,12 +191,10 @@ BasicGame.World1.prototype = {
                 PositionX = this.game.world.width;
                 PositionY = Math.random()*this.game.world.height;
             }
-            this.enemy = this.enemies.create(PositionX, PositionY, 'cat1');
+            this.enemy = this.enemies.create(PositionX, PositionY, 'enemy');
             this.enemy.anchor.setTo(0.5,0.5);
-            this.enemy.animations.add('walkDown', [6,7,8], 10, true);
-            this.enemy.animations.add('WalkUp', [0,1,2], 10, true);
-            this.enemy.animations.add('Walkright', [3,4,5], 10, true);
-            this.enemy.animations.add('WalkLeft', [9,10,11], 10, true);
+            this.enemy.animations.add('standard', [0,1,2], 3, true);
+            this.enemy.animations.play('standard');
             this.enemy.body.velocity.x = xVelocity;
             this.enemy.body.velocity.y = yVelocity;
             p++;
