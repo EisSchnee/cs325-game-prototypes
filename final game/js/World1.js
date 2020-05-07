@@ -175,12 +175,12 @@ BasicGame.World1.prototype = {
         this.match.body.collideWorldBounds = true;
     },
     getMatch: function () {
-        localStorage.setItem("hasMatch", true);
+        localStorage.setItem("hasMatch", "t");
         this.quitGame(3);
     },
 
     getSword: function () {
-        localStorage.setItem("hasSword", true);
+        localStorage.setItem("hasSword", "t");
         this.quitGame(3);
     },
 

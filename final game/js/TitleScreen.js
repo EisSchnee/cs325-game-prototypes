@@ -145,7 +145,7 @@ BasicGame.TitleScreen.prototype = {
             this.ground.add(groundBlock);
         }
         var progress = localStorage.getItem("progress");
-        if(progress == 0){
+        if(progress == "0"){
             //TODO load both green and lock.
             //load world 1
             //start progress bar at 0
@@ -155,8 +155,8 @@ BasicGame.TitleScreen.prototype = {
             this.vines = this.game.add.sprite(0, this.game.world.height -249, 'vines');
             this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
-            localStorage.setItem("progress", 1);
-        }else if(progress == 1){
+            localStorage.setItem("progress", "1");
+        }else if(progress == "1"){
             //TODO load lock and green
             //load world 1
             //start progress bar 25%
@@ -167,14 +167,14 @@ BasicGame.TitleScreen.prototype = {
             this.portal1.loadTexture('world1_open', 0, false);
             this.portalActive[0] = true;
 
-            if(localStorage.getItem("hasMatch")){
+            if(localStorage.getItem("hasMatch") == "t"){
                 this.vines.loadTexture('vines2', 0, false);
                 this.portal2.loadTexture('world2_open', 0, false);
                 this.portalActive[1] = true;
-                localStorage.setItem("progress", 2);
+                localStorage.setItem("progress", "2");
                 this.loadbar.frame = 1;
             }
-        }else if(progress == 2){
+        }else if(progress == "3"){
             //TODO load lock
             // load world 1 and 2
             //start progress bar at 50% 
@@ -185,14 +185,14 @@ BasicGame.TitleScreen.prototype = {
             this.portalActive[0] = true;
             this.portal2.loadTexture('world2_open', 0, false);
             this.portalActive[1] = true;
-            if(localStorage.getItem("hasKey")){
+            if(localStorage.getItem("hasKey") == "t"){
                 this.portal3.loadTexture('world3_open', 0, false);
                 this.portalActive[2] = true;
-                localStorage.setItem("progress", 3);
+                localStorage.setItem("progress", "3");
                 this.loadbar.frame = 2;
             }
 
-        }else if(progress == 3){
+        }else if(progress == "4"){
             //TODO load world 1 2 and 3
             //start progress bar at 90%
             //check to see if shovel is acquired, if so, play cutscene and update progress
@@ -203,10 +203,10 @@ BasicGame.TitleScreen.prototype = {
             this.portalActive[1] = true;
             this.portal3.loadTexture('world3_open', 0, false);
             this.portalActive[2] = true;
-            if(localStorage.getItem("hasShovel")){
+            if(localStorage.getItem("hasShovel") == "t"){
                 this.credits = this.game.add.sprite(this.game.world.width - 130, this.game.world.height + 100, 'credits');
                 this.portalActive[3] = true;
-                localStorage.setItem("progress", 4);
+                localStorage.setItem("progress", "4");
                 this.loadbar.frame = 3;
             }
         }else {
@@ -222,7 +222,7 @@ BasicGame.TitleScreen.prototype = {
             this.portalActive[2] = true;
             this.credits = this.game.add.sprite(this.game.world.width - 130, this.game.world.height + 100, 'credits');
             this.portalActive[3] = true;
-            localStorage.setItem("progress", 4);
+            localStorage.setItem("progress", "4");
             this.loadbar.frame = 3;
         }
     },

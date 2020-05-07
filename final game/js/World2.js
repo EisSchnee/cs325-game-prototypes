@@ -113,7 +113,7 @@ BasicGame.World2.prototype = {
         this.enemies.enableBody = true;
         this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
         //this.game.physics.enable( this.enemies, Phaser.Physics.ARCADE );
-        if(localStorage.getItem("hasKey")){
+        if(localStorage.getItem("hasKey") == "t"){
             this.createEnemies();
         }
         var yVelocity = (Math.random()*this.SPEED)-(this.SPEED/2);
@@ -193,17 +193,24 @@ BasicGame.World2.prototype = {
             this.char.frame = 3;
         }
         if(this.active){
-        this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);// error in this.char.body
+        this.physics.arcade.overlap(this.char, this.key, this.getKey, null, this);
         }if(this.active){
-        this.physics.arcade.overlap(this.char, this.key, this.point, null, this);
+        this.physics.arcade.overlap(this.char, this.shield, this.getShield, null, this);
         }if(this.active){
-        this.physics.arcade.overlap(this.char, this.shield, this.point, null, this);
+        this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
         }
     },
-    point: function (){
+    getKey: function (){
+        localStorage.set("hasKey", "t");
         this.quitGame(3);
     },
     
+    getShield: function () {
+        localStorage.set("hasShield", "t");
+        this.quitGame(3);
+
+    },
+
     damage: function (player, enemy) {
         this.health -= 35;
        // this.scoredown.play();

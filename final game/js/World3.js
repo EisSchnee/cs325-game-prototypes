@@ -58,12 +58,12 @@ BasicGame.World3.prototype = {
    create: function () {
     this.char = this.game.add.sprite( 25, this.game.world.centerY+100, 'large_char' );
     this.boss = this.game.add.sprite( this.game.world.width-275, this.game.world.centerY-100, 'boss' );
-    if(localStorage.getItem("hasSword")){
+    if(localStorage.getItem("hasSword") == "t"){
         this.attack_button = this.add.button( 100, this.game.world.height -100, 'attack_button', this.attack, this, 'over', 'out', 'down');
     }else{
         this.attack_button = this.game.add.sprite(100, this.game.world.height -100, 'missing_sword');
     }
-    if(localStorage.getItem("hasShield")){
+    if(localStorage.getItem("hasShield") == "t"){
         this.defend_button = this.add.button( this.game.world.centerX - 50, this.game.world.height -100, 'block_button', this.defend, this, 'over', 'out', 'down');
     }else{
         this.defend_button = this.game.add.sprite(this.game.world.centerX - 50, this.game.world.height -100, 'missing_shield');
@@ -160,7 +160,7 @@ BasicGame.World3.prototype = {
             this.enemy_move_text.setText('Enemy is healing!');
         }
         if( this.health <= 0){
-            localStorage.setItem("hasShovel", true);
+            localStorage.setItem("hasShovel", "true");
             this.quitGame(3);
         }
    },
