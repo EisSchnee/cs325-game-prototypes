@@ -52,8 +52,16 @@ BasicGame.World3.prototype = {
    create: function () {
     this.char = this.game.add.sprite( 25, this.game.world.centerY+100, 'large_char' );
     this.boss = this.game.add.sprite( this.game.world.width-275, this.game.world.centerY-100, 'boss' );
-    this.attack_button = this.add.button( 100, this.game.world.height -100, 'attack_button', this.attack, this, 'over', 'out', 'down');
-    this.defend_button = this.add.button( this.game.world.centerX - 50, this.game.world.height -100, 'block_button', this.defend, this, 'over', 'out', 'down');
+    if(localStorage.getItem("hasSword")){
+        this.attack_button = this.add.button( 100, this.game.world.height -100, 'attack_button', this.attack, this, 'over', 'out', 'down');
+    }else{
+        this.attack_button = this.game.add.sprite(100, this.game.world.height -100, 'missing_sword');
+    }
+    if(localStorage.getItem("hasShield")){
+        this.defend_button = this.add.button( this.game.world.centerX - 50, this.game.world.height -100, 'block_button', this.defend, this, 'over', 'out', 'down');
+    }else{
+        this.defend_button = this.game.add.sprite(this.game.world.centerX - 50, this.game.world.height -100, 'missing_shield');
+    }
     this.prepare_button = this.add.button(this.game.world.width - 263, this.game.world.height -100, 'prepare_button', this.prepare, this);
 
     var style1 = { font: "25px Verdana", fill: "#9999ff", align: "center" };

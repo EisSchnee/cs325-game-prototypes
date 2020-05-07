@@ -40,6 +40,7 @@ BasicGame.World1.prototype = {
     create: function() {
         this.game.physics.arcade.gravity.y = 400;
         // Create the map. 
+        var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
         this.map = this.game.add.tilemap('map');
         // for csv files specify the tile size.
        // this.map = this.game.add.tilemap('map', 32, 64);

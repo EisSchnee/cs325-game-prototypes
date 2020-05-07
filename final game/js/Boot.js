@@ -65,7 +65,9 @@ BasicGame.Boot.prototype = {
         this.load.image('prepare_button', 'assets/prepare_button.png');
         this.load.image('boss', 'assets/boss.png');
         this.load.image('large_char', 'assets/large_char.png');
-
+        this.load.image('need_shield', 'assets/need_shield_button.png');
+        this.load.image('need_sword', 'assets/need_sword_button.png');
+        this.load.image('credits', 'assets/credits.png');
 
         this.load.tilemap('map', 'assets/tilemap_example.json', null, Phaser.Tilemap.TILED_JSON);
         // alternatively, from .csv file

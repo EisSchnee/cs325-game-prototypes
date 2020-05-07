@@ -96,9 +96,9 @@ BasicGame.TitleScreen.prototype = {
         //this.healthbar = this.game.add.sprite(0, 0, 'healthBar');
         this.items = this.game.add.sprite(this.game.world.width -200, 0, 'items');
 
-        this.portal1 = this.game.add.sprite(30, this.game.world.centerY + 50, 'world1');
-        this.portal2 = this.game.add.sprite(this.game.world.centerX - 50, this.game.world.centerY + 50, 'world2');
-        this.portal3 = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'world3');
+        this.portal1 = this.game.add.sprite(30, this.game.world.centerY + 50, 'world1_closed');
+        this.portal2 = this.game.add.sprite(this.game.world.centerX - 50, this.game.world.centerY + 50, 'world2_closed');
+        this.portal3 = this.game.add.sprite(this.game.world.width - 130, this.game.world.centerY + 50, 'world3_closed');
         this.loadbar = this.game.add.sprite(this.game.world.centerX - 100, this.game.world.centerY - 75, 'loadbar');
         this.game.physics.enable(this.loadbar, Phaser.Physics.ARCADE);
         this.loadbar.body.immovable = true;
@@ -116,6 +116,7 @@ BasicGame.TitleScreen.prototype = {
         /*var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
         this.text = this.game.add.text( 15, 15, 'Score: 0', style );
         this.text.anchor.setTo( 0.5, 0.0 );*/
+        var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
         this.player_health_text = this.game.add.text(200, 200, 'health: 100', style2);
          // Create some ground for the player to walk on
         this.ground = this.game.add.group();

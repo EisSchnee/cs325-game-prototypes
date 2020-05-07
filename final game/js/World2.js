@@ -69,6 +69,7 @@ BasicGame.World2.prototype = {
         
         //  Resize the world
         this.layer1.resizeWorld();
+        var style2 = { font: "40px Verdana", fill: "#FF0000", align: "center" };
 
         this.game.physics.arcade.gravity.y = 0;
      
