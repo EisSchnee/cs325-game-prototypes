@@ -22,6 +22,8 @@ BasicGame.World1 = function (game) {
     this.map = null;
     this.layer1 = null;
     this.score = 1;
+    
+    this.active = true;
 
     this.enemies = null;
     this.items = null;
@@ -109,36 +111,37 @@ BasicGame.World1.prototype = {
     },
     
     update: function() {
+        if(this.active){
+            this.game.physics.arcade.collide(this.char, this.ground);
+            this.game.physics.arcade.collide(this.char, this.platforms);
+            this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
+            this.physics.arcade.overlap(this.char, this.match, this.getMatch, null, this);
+            this.physics.arcade.overlap(this.char, this.sword, this.getSword, null, this);
+            //TODO check collision of  
 
-       this.game.physics.arcade.collide(this.char, this.ground);
-       this.game.physics.arcade.collide(this.char, this.platforms);
-       this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);
-       this.physics.arcade.overlap(this.char, this.match, this.getMatch, null, this);
-       this.physics.arcade.overlap(this.char, this.sword, this.getSword, null, this);
-       //TODO check collision of  
+            if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+                // If the LEFT key is down, move left
+                    this.char.body.velocity.x = -this.SPEED;
+                    this.char.animations.play('walkLeft');
+            } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+                // If the RIGHT key is down, move right
+                    this.char.body.velocity.x = this.SPEED;
+                    this.char.animations.play('walkRight');
+            }else{
+                    this.char.body.velocity.x = 0;
+                    this.char.frame = 0;
+            }
 
-       if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-           // If the LEFT key is down, move left
-            this.char.body.velocity.x = -this.SPEED;
-            this.char.animations.play('walkLeft');
-       } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-           // If the RIGHT key is down, move right
-            this.char.body.velocity.x = this.SPEED;
-            this.char.animations.play('walkRight');
-       }else{
-            this.char.body.velocity.x = 0;
-            this.char.frame = 0;
-       }
+            var onTheGround = this.char.body.touching.down || this.char.body.touching.left || this.char.body.touching.right;
 
-       var onTheGround = this.char.body.touching.down || this.char.body.touching.left || this.char.body.touching.right;
-
-       if ((onTheGround || this.char.body.y > this.game.world.height - 100) && this.input.keyboard.isDown(Phaser.Keyboard.UP) ) {
-           // Jump when the player is touching the ground and the up arrow is pressed
-           this.char.body.velocity.y = -400;
-       }
+            if ((onTheGround || this.char.body.y > this.game.world.height - 100) && this.input.keyboard.isDown(Phaser.Keyboard.UP) ) {
+                // Jump when the player is touching the ground and the up arrow is pressed
+                this.char.body.velocity.y = -400;
+            }
+        }
     },
     createPlatforms: function() {
-        var platheight = 100;
+        var platheight = 200;
         var platnum = 10;
 
         var currentheight = this.game.world.height;
@@ -230,6 +233,7 @@ BasicGame.World1.prototype = {
 
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
+        this.active = false;
         this.char.destroy();
         //this.SPEED.destroy();
         this.ground.destroy();

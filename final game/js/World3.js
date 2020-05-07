@@ -40,6 +40,8 @@ BasicGame.World3 = function (game) {
     this.defending = false;
     this.heavy = false;
 
+    this.active = true;
+
     this.enemy_move_text = null;
     this.enemy_health_text = null;
     this.player_health_text = null;
@@ -167,7 +169,7 @@ BasicGame.World3.prototype = {
 
        //  Here you should destroy anything you no longer need.
        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
+        this.active = false;
         this.char.destroy();
         this.boss.destroy();
         this.attack_button.destroy();

@@ -35,6 +35,8 @@ BasicGame.World2 = function (game) {
 
     this.food = null;
 
+    this.active = true;
+
     this.enemies = null;
 
     this.enemy = null;
@@ -255,6 +257,8 @@ BasicGame.World2.prototype = {
 
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
+        this.active = false;
+        
         this.char.destroy();
 
         //this.SPEED.destroy();
