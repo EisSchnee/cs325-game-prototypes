@@ -231,7 +231,7 @@ BasicGame.World1.prototype = {
         this.ground.destroy();
         this.map.destroy();
         this.layer1.destroy();
-        this.score.destroy();
+        //this.score.destroy();
 
         this.enemies.destroy();
         this.items.destroy()
@@ -241,7 +241,7 @@ BasicGame.World1.prototype = {
         this.sword.destroy();
         this.lock.destroy();
 
-        this.health.destroy();
+        //this.health.destroy();
         this.platforms.destroy();
 
         if (val == 0) {
