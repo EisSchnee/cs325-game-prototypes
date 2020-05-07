@@ -71,8 +71,10 @@ BasicGame.TitleScreen.prototype = {
     create: function () {
         this.active = true;
         this.game.camera.reset();
+        this.game.setGameSize(800, 600);
         this.game.physics.arcade.gravity.y = 2600;
         this.background = this.game.add.sprite(0,0, 'background');
+
 
         this.char = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY-300, 'char' );
       /*  this.char.frame = 6;
