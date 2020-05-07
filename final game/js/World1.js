@@ -198,15 +198,7 @@ BasicGame.World1.prototype = {
             this.enemy.body.velocity.x = xVelocity;
             this.enemy.body.velocity.y = yVelocity;
             p++;
-            if(yVelocity>Math.abs(xVelocity)){
-                this.enemy.animations.play('WalkUp');
-            }else if(yVelocity < -Math.abs(xVelocity)){
-                this.enemy.animations.play('WalkDown');
-            }else if(xVelocity > 0){
-                this.enemy.animations.play('WalkRight');
-            }else{
-                this.enemy.animations.play('WalkLeft');
-            }
+
         }
         this.enemies.setAll('body.collideWorldBounds', true);
         this.enemies.setAll('body.bounce.x', 1);
