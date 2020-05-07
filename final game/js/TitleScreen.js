@@ -326,7 +326,7 @@ BasicGame.TitleScreen.prototype = {
         this.shield.destroy();
         this.super.destroy();*/
 
-        this.health.destroy();
+        //this.health.destroy();
         if (val == 0) {
             this.state.start('World1');
         } else if (val == 1) {
