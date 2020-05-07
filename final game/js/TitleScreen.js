@@ -122,6 +122,13 @@ BasicGame.TitleScreen.prototype = {
         this.portal3.body.immovable = true;
         this.portal3.body.allowGravity = false;
         this.ctr = 0;
+
+        this.portal1.loadTexture('world1_open', 0, false);
+            this.portalActive[0] = true;
+            this.portal2.loadTexture('world2_open', 0, false);
+            this.portalActive[1] = true;
+            this.portal3.loadTexture('world3_open', 0, false);
+            this.portalActive[2] = true;
         /*var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
         this.text = this.game.add.text( 15, 15, 'Score: 0', style );
         this.text.anchor.setTo( 0.5, 0.0 );*/
