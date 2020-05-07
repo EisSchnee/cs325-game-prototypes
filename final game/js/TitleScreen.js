@@ -56,6 +56,8 @@ BasicGame.TitleScreen = function (game) {
     this.shield = null;
     this.super = null;
 
+    this.active = true;
+
     this.health = 100;
     this.credits = null;
     this.music = new Audio('assets/335571__magntron__gamemusic.mp3');
@@ -218,90 +220,94 @@ BasicGame.TitleScreen.prototype = {
 
 
     update: function () {
-        if(this.portalActive[0]){
-            this.physics.arcade.overlap(this.char, this.portal1, this.enterWorld1, null, this);
-        }
-        if(this.portalActive[1]){
-            this.physics.arcade.overlap(this.char, this.portal2, this.enterWorld2, null, this);
-        }
-        if(this.portalActive[2]){
-            this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
-        } 
-        if(this.portalActive[3]){
-            this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
-        }  
-        this.game.physics.arcade.collide(this.char, this.ground);
-        this.game.physics.arcade.collide(this.char, this.loadbar);
-
-        if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-            // If the LEFT key is down, move left
-            this.char.body.velocity.x = -this.SPEED;
-            this.char.animations.play('walkLeft');
-        } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-            // If the RIGHT key is down, move right
-            this.char.body.velocity.x = this.SPEED;
-            this.char.animations.play('walkRight');
-        }else{
-            this.char.body.velocity.x = 0;
-            this.char.frame = 0;
-        }
-
-        var onTheGround = this.char.body.touching.down;
-
-        if (onTheGround && this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-            // Jump when the player is touching the ground and the up arrow is pressed
-            this.char.body.velocity.y = -1000;
-        }
-        /*} if (this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-            // If the UP key is down, move up
-            this.char.body.velocity.y = -this.SPEED;
-            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-                this.char.animations.play('walkUp')
+       if(this.active){
+       
+            if(this.portalActive[0]){
+                this.physics.arcade.overlap(this.char, this.portal1, this.enterWorld1, null, this);
             }
-        } else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-            // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
-            this.char.body.velocity.y = this.SPEED;
-            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-                this.char.animations.play('walkDown');
+            if(this.portalActive[1]){
+                this.physics.arcade.overlap(this.char, this.portal2, this.enterWorld2, null, this);
             }
-        } else {
-            // Stop moving
-            this.char.body.velocity.y = 0;
-            if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-                this.char.frame = 6;
-             }
-        }*/
+            if(this.portalActive[2]){
+                this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
+            } 
+            if(this.portalActive[3]){
+                this.physics.arcade.overlap(this.char, this.portal3, this.enterWorld3, null, this);
+            }  
+            this.game.physics.arcade.collide(this.char, this.ground);
+            this.game.physics.arcade.collide(this.char, this.loadbar);
+
+            if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+                // If the LEFT key is down, move left
+                this.char.body.velocity.x = -this.SPEED;
+                this.char.animations.play('walkLeft');
+            } else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+                // If the RIGHT key is down, move right
+                this.char.body.velocity.x = this.SPEED;
+                this.char.animations.play('walkRight');
+            }else{
+                this.char.body.velocity.x = 0;
+                this.char.frame = 0;
+            }
+
+            var onTheGround = this.char.body.touching.down;
+
+            if (onTheGround && this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                // Jump when the player is touching the ground and the up arrow is pressed
+                this.char.body.velocity.y = -1000;
+            }
+            /*} if (this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                // If the UP key is down, move up
+                this.char.body.velocity.y = -this.SPEED;
+                if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+                    this.char.animations.play('walkUp')
+                }
+            } else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
+                // If the DOWN key is... down, move.. well down. Betcha' didn't see that coming.
+                this.char.body.velocity.y = this.SPEED;
+                if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+                    this.char.animations.play('walkDown');
+                }
+            } else {
+                // Stop moving
+                this.char.body.velocity.y = 0;
+                if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+                    this.char.frame = 6;
+                }
+            }*/
 
 
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+            //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        }    
     },
 
     enterWorld1: function () {
-       this.state.start('World1');
+       this.quitGame(0);
     },
 
 
     enterWorld2: function () {
-        this.state.start('World2');
+        this.quitGame(1);
     },
 
     enterWorld3: function() {
-        this.quitGame();
+        this.quitGame(2);
     },
 
     quitGame: function (val) {
 
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
+        this.active = false;
         this.char.destroy();
 
-        this.SPEED.destroy();
+       //this.SPEED.destroy();
 
         this.objects.destroy();
 
-        this.score.destroy();
+        //this.score.destroy();
 
-        this.ctr.destroy();
+       // this.ctr.destroy();
 
         this.portal1.destroy();
         this.portal2.destroy();
@@ -313,12 +319,12 @@ BasicGame.TitleScreen.prototype = {
         this.background.destroy();
     //this.text;
 
-        this.sword.destroy();
+        /*this.sword.destroy();
         this.shovel.destroy();
         this.match.destroy();
         this.key.destroy();
         this.shield.destroy();
-        this.super.destroy();
+        this.super.destroy();*/
 
         this.health.destroy();
         if (val == 0) {

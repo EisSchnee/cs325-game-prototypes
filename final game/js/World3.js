@@ -173,10 +173,10 @@ BasicGame.World3.prototype = {
         this.attack_button.destroy();
         this.defend_button.destroy();
         this.prepare_button.destroy();
-        this.enemy_health.destroy();
-        this.prepared.destroy();
-        this.defending.destroy();
-        this.heavy.destroy();
+        //this.enemy_health.destroy();
+        //this.prepared.destroy();
+        //this.defending.destroy();
+        //this.heavy.destroy();
 
         this.enemy_move_text.destroy();
         this.enemy_health_text.destroy();
