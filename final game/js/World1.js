@@ -132,21 +132,21 @@ BasicGame.World1.prototype = {
 
        var onTheGround = this.char.body.touching.down || this.char.body.touching.left || this.char.body.touching.right;
 
-       if (onTheGround && this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+       if ((onTheGround || this.char.body.y > this.game.world.height - 100) && this.input.keyboard.isDown(Phaser.Keyboard.UP) ) {
            // Jump when the player is touching the ground and the up arrow is pressed
            this.char.body.velocity.y = -1000;
        }
     },
     createPlatforms: function() {
-        var platheight = 200;
+        var platheight = 100;
         var platnum = 10;
 
-        var currentheight = 0;
+        var currentheight = this.game.world.height;
         this.platforms = this.game.add.group();
         while(platnum > 0){
-            currentheight += platheight;
+            currentheight -= platheight;
             if(platnum == 4){
-                this.sword = this.game.add.sprite(this.game.width / 4, currentheight + 100, 'sword');
+                this.sword = this.game.add.sprite(this.game.width / 4, currentheight - 100, 'sword');
                 this.game.physics.enable(this.sword, Phaser.Physics.ARCADE);
             }
             for(var i = 1; i <= platnum; i++){
@@ -156,9 +156,9 @@ BasicGame.World1.prototype = {
                 platform.body.allowGravity = false;
                 this.platforms.add(platform);
             }
-            platnum--;
+            platnum -= 2;
         }
-        this.match = this.game.add.sprite(this.game.width / 2, currentheight + 100, 'match');
+        this.match = this.game.add.sprite(this.game.width / 2, currentheight - 100, 'match');
         this.game.physics.enable(this.match, Phaser.Physics.ARCADE);
     },
     getMatch: function () {
