@@ -195,10 +195,15 @@ BasicGame.World2.prototype = {
         if(this.active){
         this.physics.arcade.overlap(this.char, this.enemies, this.damage, null, this);// error in this.char.body
         }if(this.active){
-        this.physics.arcade.overlap(this.char, this.food, this.point, null, this);
+        this.physics.arcade.overlap(this.char, this.key, this.point, null, this);
+        }if(this.active){
+        this.physics.arcade.overlap(this.char, this.shield, this.point, null, this);
         }
     },
-
+    point: function (){
+        this.quitGame(3);
+    },
+    
     damage: function (player, enemy) {
         this.health -= 35;
        // this.scoredown.play();
