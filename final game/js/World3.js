@@ -154,6 +154,7 @@ BasicGame.World3.prototype = {
             this.enemy_move_text.setText('Enemy is healing!');
         }
         if( this.health <= 0){
+            localStorage.setItem("hasShovel", true);
             this.quitGame(3);
         }
    },
