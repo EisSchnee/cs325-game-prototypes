@@ -71,7 +71,7 @@ BasicGame.TitleScreen.prototype = {
     create: function () {
         this.active = true;
         this.game.camera.reset();
-        Phaser.ScaleManager.setGameSize(800, 600);
+        this.game.scale.setGameSize(800, 600)
         this.game.physics.arcade.gravity.y = 2600;
         this.background = this.game.add.sprite(0,0, 'background');
 
