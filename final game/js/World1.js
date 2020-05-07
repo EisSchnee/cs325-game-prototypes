@@ -134,7 +134,7 @@ BasicGame.World1.prototype = {
 
        if ((onTheGround || this.char.body.y > this.game.world.height - 100) && this.input.keyboard.isDown(Phaser.Keyboard.UP) ) {
            // Jump when the player is touching the ground and the up arrow is pressed
-           this.char.body.velocity.y = -1000;
+           this.char.body.velocity.y = -400;
        }
     },
     createPlatforms: function() {
@@ -148,6 +148,8 @@ BasicGame.World1.prototype = {
             if(platnum == 4){
                 this.sword = this.game.add.sprite(this.game.width / 4, currentheight - 100, 'sword');
                 this.game.physics.enable(this.sword, Phaser.Physics.ARCADE);
+                this.sword.anchor.setTo(0.5, 0.5);
+                this.sword.body.collideWorldBounds = true;
             }
             for(var i = 1; i <= platnum; i++){
                 var platform = this.game.add.sprite((this.game.width / platnum) * i, currentheight, 'platform');
@@ -156,10 +158,12 @@ BasicGame.World1.prototype = {
                 platform.body.allowGravity = false;
                 this.platforms.add(platform);
             }
-            platnum -= 2;
+            platnum --;
         }
         this.match = this.game.add.sprite(this.game.width / 2, currentheight - 100, 'match');
         this.game.physics.enable(this.match, Phaser.Physics.ARCADE);
+        this.match.anchor.setTo(0.5, 0.5);
+        this.match.body.collideWorldBounds = true;
     },
     getMatch: function () {
         localStorage.setItem("hasMatch", true);
@@ -234,7 +238,7 @@ BasicGame.World1.prototype = {
         //this.score.destroy();
 
         this.enemies.destroy();
-        this.items.destroy()
+       // this.items.destroy()
         this.enemy.destroy();
         this.match.destroy();
 
